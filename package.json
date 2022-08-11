@@ -6,9 +6,9 @@
   "private": true,
   "scripts": {
     "webapp:start": "yarn workspace js-internship-web-app dev",
-    "playwright:test": "yarn workspace js-internship-playwright test",
-    "playwright:report": "yarn workspace js-internship-playwright report",
-    "cypress:test": "yarn workspace js-internship-cypress test",
+    "playwright-e2e:test": "yarn workspace js-internship-playwright test",
+    "playwright-e2e:report": "yarn workspace js-internship-playwright report",
+    "cypress-e2e:test": "yarn workspace js-internship-cypress test",
     "postinstall": "yarn workspace js-internship-playwright install"
   },
   "resolutions": {
@@ -17,8 +17,8 @@
     "@types/express-serve-static-core": "4.17.2"
   },
   "workspaces": [
-    "cypress",
-    "playwright",
+    "cypress-e2e",
+    "playwright-e2e",
     "webapp"
   ]
 }

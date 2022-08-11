@@ -5,12 +5,12 @@
 			"path": "../"
 		},
 		{
-			"name": "cypress",
-			"path": "../cypress"
+			"name": "cypress-e2e",
+			"path": "../cypress-e2e"
 		},
 		{
-			"name": "playwright",
-			"path": "../playwright"
+			"name": "playwright-e2e",
+			"path": "../playwright-e2e"
 		},
 		{
 			"name": "webapp",
@@ -20,9 +20,9 @@
 	"settings": {
 		// Exclude project folders inside the root directory in workspace
 		"files.exclude": {
-			"cypress": true,
-			"webapp": true,
-			"playwright": true
+			"cypress-e2e": true,
+			"playwright-e2e": true,
+			"webapp": true
 		},
 		"[javascript]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode",

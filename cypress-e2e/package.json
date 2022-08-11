@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "echo 'cypress - no tests yet'"
+    "test": "cypress run",
+    "open": "cypress open"
   },
   "dependencies": {
     "cypress": "^10.4.0"
