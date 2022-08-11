@@ -1,0 +1,12 @@
+{
+  "name": "js-internship-playwright",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.24.2"
+  }
+}

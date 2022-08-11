@@ -1,0 +1,11 @@
+{
+  "name": "js-internship-cypress",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "echo 'cypress - no tests yet'"
+  },
+  "dependencies": {
+    "cypress": "^10.4.0"
+  }
+}

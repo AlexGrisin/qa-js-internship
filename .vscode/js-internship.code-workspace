@@ -1,0 +1,43 @@
+{
+	"folders": [
+		{
+			"name": "root",
+			"path": "../"
+		},
+		{
+			"name": "cypress",
+			"path": "../cypress"
+		},
+		{
+			"name": "playwright",
+			"path": "../playwright"
+		},
+		{
+			"name": "webapp",
+			"path": "../webapp"
+		},
+	],
+	"settings": {
+		// Exclude project folders inside the root directory in workspace
+		"files.exclude": {
+			"cypress": true,
+			"webapp": true,
+			"playwright": true
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.formatOnSave": true
+		},
+		"[json]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.formatOnSave": true
+		},
+	},
+	"extensions": {
+	  "recommendations": [
+		"esbenp.prettier-vscode",
+		"streetsidesoftware.code-spell-checker",
+		"ms-playwright.playwright"
+	  ]
+	}
+}

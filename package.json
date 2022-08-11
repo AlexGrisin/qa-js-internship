@@ -1,0 +1,18 @@
+{
+  "name": "js-internship",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "webapp:start": "yarn workspace js-internship-web-app dev",
+    "playwright:test": "yarn workspace js-internship-playwright test",
+    "playwright:report": "yarn workspace js-internship-playwright report",
+    "cypress:test": "yarn workspace js-internship-cypress test"
+  },
+  "workspaces": [
+    "cypress",
+    "playwright",
+    "webapp"
+  ]
+}
