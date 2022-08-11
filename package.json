@@ -10,6 +10,11 @@
     "playwright:report": "yarn workspace js-internship-playwright report",
     "cypress:test": "yarn workspace js-internship-cypress test"
   },
+  "resolutions": {
+    "@babel/compat-data": "7.9.0",
+    "@types/express": "4.17.2",
+    "@types/express-serve-static-core": "4.17.2"
+  },
   "workspaces": [
     "cypress",
     "playwright",
