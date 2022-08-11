@@ -8,7 +8,8 @@
     "webapp:start": "yarn workspace js-internship-web-app dev",
     "playwright:test": "yarn workspace js-internship-playwright test",
     "playwright:report": "yarn workspace js-internship-playwright report",
-    "cypress:test": "yarn workspace js-internship-cypress test"
+    "cypress:test": "yarn workspace js-internship-cypress test",
+    "postinstall": "yarn workspace js-internship-playwright install"
   },
   "resolutions": {
     "@babel/compat-data": "7.9.0",
