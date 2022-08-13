@@ -1,0 +1,11 @@
+{
+  "name": "js-internship-supertest",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "dependencies": {
+    "supertest": "^6.2.4"
+  }
+}

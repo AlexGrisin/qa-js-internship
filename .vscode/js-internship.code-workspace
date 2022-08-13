@@ -13,6 +13,10 @@
 			"path": "../playwright-e2e"
 		},
 		{
+			"name": "supertest-api",
+			"path": "../supertest-api"
+		},
+		{
 			"name": "webapp",
 			"path": "../webapp"
 		},
@@ -22,6 +26,7 @@
 		"files.exclude": {
 			"cypress-e2e": true,
 			"playwright-e2e": true,
+			"supertest-api": true,
 			"webapp": true
 		},
 		"[javascript]": {
