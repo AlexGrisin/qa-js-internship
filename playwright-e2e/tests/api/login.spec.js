@@ -21,7 +21,7 @@ test("should log in", async () => {
   expect(loginResponse.ok()).toBeTruthy();
 });
 
-test("should see log in error on invalid credentials", async () => {
+test("should fail log in on invalid credentials", async () => {
   const loginResponse = await apiContext.post("/login", {
     data: {
       username: nonExistingUser.username,
