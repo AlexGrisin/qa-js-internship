@@ -40,6 +40,12 @@ We use Cypress real world web application purely for demonstration and education
 Make sure to qualify for the [Prerequisite](./webapp/README.md#Prerequisites).
 Start Web application with [Run the app](./webapp/README.md#Run).  
 
+### Start Web application
+
+```shell
+yarn webapp:start
+```
+
 ## Cypress
 
 **Cypress** is a Front end automation framework.
@@ -49,7 +55,7 @@ Extensive documentation can be found [here](https://docs.cypress.io/guides/overv
 ### Execute Cypress tets
 
 ```shell
-yarn cypress:test
+yarn cypress-e2e:test
 ```
 
 ## PlayWright
@@ -61,5 +67,23 @@ Extensive documentation can be found [here](https://playwright.dev/docs/intro)
 ### Execute PlayWright tets
 
 ```shell
-yarn playwright:test
+yarn playwright-e2e:test
+```
+
+### Execute PlayWright API tets
+
+```shell
+yarn playwright-e2e:test:api
+```
+
+## Supertest
+
+**SuperTest** is a module to provide a high-level abstraction for testing HTTP
+
+Documentation can be found [here](https://github.com/visionmedia/supertest)
+
+### Execute Supertest API tets
+
+```shell
+yarn supertest-api:test
 ```
