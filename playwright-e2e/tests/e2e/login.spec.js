@@ -1,8 +1,8 @@
 // @ts-check
 const { test, expect } = require("@playwright/test");
-const { testUser, nonExistingUser } = require("../data/users");
-const { LoginPage } = require("../pages/LoginPage");
-const { MyAccountPage } = require("../pages/MyAccountPage");
+const { testUser, nonExistingUser } = require("../../data/users");
+const { LoginPage } = require("../../pages/LoginPage");
+const { MyAccountPage } = require("../../pages/MyAccountPage");
 
 test("should log in", async ({ page }) => {
   const loginPage = new LoginPage(page);
