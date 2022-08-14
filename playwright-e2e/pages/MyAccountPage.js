@@ -1,4 +1,4 @@
-const { expect } = require("@playwright/test");
+const { expect } = require('@playwright/test');
 
 exports.MyAccountPage = class MyAccountPage {
   /**
@@ -6,7 +6,7 @@ exports.MyAccountPage = class MyAccountPage {
    */
   constructor(page) {
     this.page = page;
-    this.userName = page.locator("[data-test=sidenav-username]");
-    this.logOutLink = page.locator("[data-test=sidenav-signout]");
+    this.userName = page.locator('[data-test=sidenav-username]');
+    this.logOutLink = page.locator('[data-test=sidenav-signout]');
   }
 };

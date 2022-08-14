@@ -1,4 +1,4 @@
-const { expect } = require("@playwright/test");
+const { expect } = require('@playwright/test');
 
 exports.LoginPage = class LoginPage {
   /**
@@ -6,14 +6,14 @@ exports.LoginPage = class LoginPage {
    */
   constructor(page) {
     this.page = page;
-    this.userNameField = page.locator("#username");
-    this.passwordField = page.locator("#password");
-    this.signInButton = page.locator("[data-test=signin-submit]");
-    this.loginError = page.locator(".MuiAlert-message");
+    this.userNameField = page.locator('#username');
+    this.passwordField = page.locator('#password');
+    this.signInButton = page.locator('[data-test=signin-submit]');
+    this.loginError = page.locator('.MuiAlert-message');
   }
 
   async goto() {
-    await this.page.goto("/signin");
+    await this.page.goto('/signin');
   }
 
   async userLogin(username, password) {
