@@ -9,6 +9,6 @@
     "install": "playwright install"
   },
   "devDependencies": {
-    "@playwright/test": "^1.24.2"
+    "@playwright/test": "^1.25.0"
   }
 }
