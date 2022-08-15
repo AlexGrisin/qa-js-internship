@@ -2,6 +2,7 @@
   "name": "js-internship-web-app",
   "version": "1.0.0",
   "description": "A payment application to demonstrate **real-world** usage of Cypress testing methods, patterns, and workflows. For a full reference of our documentation, go to https://docs.cypress.io",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/cypress-io/cypress-realworld-app.git"

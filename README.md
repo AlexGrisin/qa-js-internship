@@ -35,7 +35,7 @@ yarn add -D <dependency_name>
 
 ## Web application under test
 
-We use Cypress real world web application purely for demonstration and educational purposes. Use this app to learn, experiment, tinker, and practice application testing with different test frameworks.
+We use Cypress [Real World Application](https://www.cypress.io/blog/2020/06/11/introducing-the-cypress-real-world-app/) purely for demonstration and educational purposes. Use this app to learn, experiment, tinker, and practice application testing with different test frameworks.
 
 Make sure to qualify for the [Prerequisite](./webapp/README.md#Prerequisites).
 Start Web application with [Run the app](./webapp/README.md#Run).
