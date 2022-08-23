@@ -1,16 +1,16 @@
-import React from "react";
-import { Tabs, Tab } from "@material-ui/core";
-import { Link, useRouteMatch } from "react-router-dom";
+import React from 'react';
+import { Tabs, Tab } from '@material-ui/core';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function TransactionNavTabs() {
   const match = useRouteMatch();
 
   // Route Lookup for tabs
   const navUrls: any = {
-    "/": 0,
-    "/public": 0,
-    "/contacts": 1,
-    "/personal": 2,
+    '/': 0,
+    '/public': 0,
+    '/contacts': 1,
+    '/personal': 2,
   };
 
   // Set selected tab based on url

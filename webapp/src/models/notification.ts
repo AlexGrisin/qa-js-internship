@@ -1,13 +1,13 @@
 export enum PaymentNotificationStatus {
-  requested = "requested",
-  received = "received",
-  incomplete = "incomplete",
+  requested = 'requested',
+  received = 'received',
+  incomplete = 'incomplete',
 }
 
 export enum NotificationsType {
-  payment = "payment",
-  like = "like",
-  comment = "comment",
+  payment = 'payment',
+  like = 'like',
+  comment = 'comment',
 }
 
 export interface NotificationBase {
@@ -20,7 +20,7 @@ export interface NotificationBase {
   modifiedAt: Date;
 }
 
-export type NotificationUpdatePayload = Partial<Pick<NotificationBase, "id" | "isRead">>;
+export type NotificationUpdatePayload = Partial<Pick<NotificationBase, 'id' | 'isRead'>>;
 
 export interface PaymentNotification extends NotificationBase {
   status: PaymentNotificationStatus;

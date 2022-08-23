@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Check as CheckIcon,
@@ -6,7 +6,7 @@ import {
   Payment as PaymentIcon,
   CommentRounded as CommentIcon,
   MonetizationOn as MonetizationOnIcon,
-} from "@material-ui/icons";
+} from '@material-ui/icons';
 import {
   Button,
   makeStyles,
@@ -16,15 +16,15 @@ import {
   useMediaQuery,
   ListItem,
   IconButton,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   isCommentNotification,
   isLikeNotification,
   isPaymentNotification,
   isPaymentRequestedNotification,
   isPaymentReceivedNotification,
-} from "../utils/transactionUtils";
-import { NotificationResponseItem } from "../models";
+} from '../utils/transactionUtils';
+import { NotificationResponseItem } from '../models';
 
 export interface NotificationListItemProps {
   notification: NotificationResponseItem;
@@ -33,19 +33,19 @@ export interface NotificationListItemProps {
 
 const useStyles = makeStyles({
   card: {
-    minWidth: "100%",
+    minWidth: '100%',
   },
   title: {
     fontSize: 18,
   },
   green: {
-    color: "#4CAF50",
+    color: '#4CAF50',
   },
   red: {
-    color: "red",
+    color: 'red',
   },
   blue: {
-    color: "blue",
+    color: 'blue',
   },
 });
 
@@ -57,7 +57,7 @@ const NotificationListItem: React.FC<NotificationListItemProps> = ({
   const theme = useTheme();
   let listItemText = undefined;
   let listItemIcon = undefined;
-  const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
+  const xsBreakpoint = useMediaQuery(theme.breakpoints.only('xs'));
 
   if (isCommentNotification(notification)) {
     listItemIcon = <CommentIcon />;

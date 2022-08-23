@@ -5,16 +5,16 @@ import {
   getTransactionsByUserId,
   createLike,
   getLikesByTransactionId,
-} from "../../backend/database";
+} from '../../backend/database';
 
-import { User, Transaction } from "../../src/models";
+import { User, Transaction } from '../../src/models';
 
-describe("Transactions", () => {
+describe('Transactions', () => {
   beforeEach(() => {
     seedDatabase();
   });
 
-  it("should like a transaction for a contact", () => {
+  it('should like a transaction for a contact', () => {
     const user: User = getAllUsers()[0];
     const transactions: Transaction[] = getTransactionsForUserContacts(user.id);
 
@@ -23,7 +23,7 @@ describe("Transactions", () => {
     expect(like.transactionId).toBe(transactions[0].id);
   });
 
-  it("should get a list of likes for a transaction", () => {
+  it('should get a list of likes for a transaction', () => {
     const user: User = getAllUsers()[0];
     const transactions: Transaction[] = getTransactionsByUserId(user.id);
     const transaction = transactions[0];

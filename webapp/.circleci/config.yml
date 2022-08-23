@@ -7,7 +7,7 @@ orbs:
 executors:
   with-chrome-and-firefox:
     docker:
-      - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
+      - image: 'cypress/browsers:node16.14.2-slim-chrome100-ff99-edge'
     resource_class: large
     environment:
       PERCY_TOKEN:
@@ -33,10 +33,10 @@ linux-workflow: &linux-workflow
     #  2. Validate types
     #  3. Run server unit-tests
     - cypress/install:
-        name: "Setup Linux"
+        name: 'Setup Linux'
         yarn: true
         executor: with-chrome-and-firefox
-        build: "yarn build:ci"
+        build: 'yarn build:ci'
         post-steps:
           - run:
               name: Print machine info ℹ️
@@ -53,7 +53,7 @@ linux-workflow: &linux-workflow
 
     # Run Cypress Component tests
     - cypress/run:
-        name: "Cypress Component Tests"
+        name: 'Cypress Component Tests'
         executor: with-chrome-and-firefox
         yarn: true
         component: true
@@ -69,11 +69,11 @@ linux-workflow: &linux-workflow
 
     # Run API tests against backend server
     - cypress/run:
-        name: "API Tests"
+        name: 'API Tests'
         browser: chrome
         spec: cypress/tests/api/*
         executor: with-chrome-and-firefox
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         yarn: true
         start: yarn start:ci
         record: true
@@ -88,11 +88,11 @@ linux-workflow: &linux-workflow
 
     # Run E2E tests in Chrome
     - cypress/run:
-        name: "UI Tests - Chrome"
+        name: 'UI Tests - Chrome'
         browser: chrome
         spec: cypress/tests/ui/*
         executor: with-chrome-and-firefox
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         command-prefix: npx percy exec --
         yarn: true
         start: yarn start:ci
@@ -100,7 +100,7 @@ linux-workflow: &linux-workflow
         parallel: true
         parallelism: 5
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Chrome"
+        group: 'UI - Chrome'
         requires:
           - Setup Linux
         post-steps:
@@ -108,19 +108,19 @@ linux-workflow: &linux-workflow
 
     # Run E2E tests in Chrome with mobile device viewport
     - cypress/run:
-        name: "UI Tests - Chrome - Mobile"
+        name: 'UI Tests - Chrome - Mobile'
         browser: chrome
         spec: cypress/tests/ui/*
-        config: "viewportWidth=375,viewportHeight=667"
+        config: 'viewportWidth=375,viewportHeight=667'
         executor: with-chrome-and-firefox
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         yarn: true
         start: yarn start:ci
         record: true
         parallel: true
         parallelism: 5
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Chrome - Mobile"
+        group: 'UI - Chrome - Mobile'
         requires:
           - Setup Linux
         post-steps:
@@ -128,18 +128,18 @@ linux-workflow: &linux-workflow
 
     # Run E2E tests in Firefox
     - cypress/run:
-        name: "UI Tests - Firefox"
+        name: 'UI Tests - Firefox'
         browser: firefox
         spec: cypress/tests/ui/*
         executor: with-chrome-and-firefox
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         yarn: true
         start: yarn start:ci
         record: true
         parallel: true
         parallelism: 5
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Firefox"
+        group: 'UI - Firefox'
         requires:
           - Setup Linux
         post-steps:
@@ -147,19 +147,19 @@ linux-workflow: &linux-workflow
 
     # Run E2E tests in Firefox with mobile device viewport
     - cypress/run:
-        name: "UI Tests - Firefox - Mobile"
+        name: 'UI Tests - Firefox - Mobile'
         browser: firefox
         spec: cypress/tests/ui/*
         config: viewportWidth=375,viewportHeight=667
         executor: with-chrome-and-firefox
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         yarn: true
         start: yarn start:ci
         record: true
         parallel: true
         parallelism: 5
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Firefox - Mobile"
+        group: 'UI - Firefox - Mobile'
         requires:
           - Setup Linux
         post-steps:
@@ -172,7 +172,7 @@ windows-workflow: &windows-workflow
     #  2. Validate types
     #  3. Run server unit-tests
     - cypress/install:
-        name: "Setup Windows"
+        name: 'Setup Windows'
         yarn: true
         executor:
           # executor comes from the "windows" orb
@@ -204,20 +204,20 @@ windows-workflow: &windows-workflow
 
     # Run E2E tests in Windows in Electron
     - cypress/run:
-        name: "UI Tests - Electron - Windows"
+        name: 'UI Tests - Electron - Windows'
         spec: cypress/tests/ui/*
         executor:
           # executor comes from the "windows" orb
           name: win/default
           shell: bash.exe
-        wait-on: "http://localhost:3000"
+        wait-on: 'http://localhost:3000'
         yarn: true
         start: yarn start:ci
         record: true
         parallel: true
         parallelism: 5
         ci-build-id: ${CIRCLE_SHA1:0:8}
-        group: "UI - Electron - Windows"
+        group: 'UI - Electron - Windows'
         requires:
           - Setup Windows
         post-steps:

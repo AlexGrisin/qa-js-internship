@@ -1,18 +1,18 @@
 ///<reference path="types.ts" />
 
-import express from "express";
-import { getLikesByTransactionId, createLikes } from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
-import { shortIdValidation } from "./validators";
+import express from 'express';
+import { getLikesByTransactionId, createLikes } from './database';
+import { ensureAuthenticated, validateMiddleware } from './helpers';
+import { shortIdValidation } from './validators';
 const router = express.Router();
 
 // Routes
 
 //GET /likes/:transactionId
 router.get(
-  "/:transactionId",
+  '/:transactionId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("transactionId")]),
+  validateMiddleware([shortIdValidation('transactionId')]),
   (req, res) => {
     const { transactionId } = req.params;
     const likes = getLikesByTransactionId(transactionId);
@@ -24,9 +24,9 @@ router.get(
 
 //POST /likes/:transactionId
 router.post(
-  "/:transactionId",
+  '/:transactionId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("transactionId")]),
+  validateMiddleware([shortIdValidation('transactionId')]),
   (req, res) => {
     const { transactionId } = req.params;
     /* istanbul ignore next */

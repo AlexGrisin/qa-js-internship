@@ -1,7 +1,7 @@
-import React from "react";
-import { Interpreter } from "xstate";
-import { useActor } from "@xstate/react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Interpreter } from 'xstate';
+import { useActor } from '@xstate/react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   CssBaseline,
@@ -13,35 +13,35 @@ import {
   Typography,
   makeStyles,
   Container,
-} from "@material-ui/core";
-import { Formik, Form, Field, FieldProps } from "formik";
-import { string, object } from "yup";
+} from '@material-ui/core';
+import { Formik, Form, Field, FieldProps } from 'formik';
+import { string, object } from 'yup';
 
-import RWALogo from "./SvgRwaLogo";
-import Footer from "./Footer";
-import { SignInPayload } from "../models";
-import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from "../machines/authMachine";
-import { Alert } from "@material-ui/lab";
+import RWALogo from './SvgRwaLogo';
+import Footer from './Footer';
+import { SignInPayload } from '../models';
+import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from '../machines/authMachine';
+import { Alert } from '@material-ui/lab';
 
 const validationSchema = object({
-  username: string().required("Username is required"),
+  username: string().required('Username is required'),
   password: string()
-    .min(4, "Password must contain at least 4 characters")
-    .required("Enter your password"),
+    .min(4, 'Password must contain at least 4 characters')
+    .required('Enter your password'),
 });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   logo: {
     color: theme.palette.primary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -60,12 +60,12 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
   const classes = useStyles();
   const [authState, sendAuth] = useActor(authService);
   const initialValues: SignInPayload = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     remember: undefined,
   };
 
-  const signInPending = (payload: SignInPayload) => sendAuth({ type: "LOGIN", ...payload });
+  const signInPending = (payload: SignInPayload) => sendAuth({ type: 'LOGIN', ...payload });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -105,7 +105,7 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
                     autoFocus
                     data-test="signin-username"
                     error={(touched || value !== initialValue) && Boolean(error)}
-                    helperText={touched || value !== initialValue ? error : ""}
+                    helperText={touched || value !== initialValue ? error : ''}
                     {...field}
                   />
                 )}
@@ -121,14 +121,14 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
                     id="password"
                     data-test="signin-password"
                     error={touched && value !== initialValue && Boolean(error)}
-                    helperText={touched && value !== initialValue && touched ? error : ""}
+                    helperText={touched && value !== initialValue && touched ? error : ''}
                     {...field}
                   />
                 )}
               </Field>
               <FormControlLabel
                 control={
-                  <Field name={"remember"}>
+                  <Field name={'remember'}>
                     {({ field }: FieldProps) => {
                       return <Checkbox color="primary" data-test="signin-remember-me" {...field} />;
                     }}

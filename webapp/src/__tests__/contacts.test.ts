@@ -7,19 +7,19 @@ import {
   seedDatabase,
   removeContactById,
   getContactsByUserId,
-} from "../../backend/database";
-import { User } from "../../src/models/user";
-import { totalContacts, contactsPerUser } from "../../scripts/seedDataUtils";
-describe("Contacts", () => {
+} from '../../backend/database';
+import { User } from '../../src/models/user';
+import { totalContacts, contactsPerUser } from '../../scripts/seedDataUtils';
+describe('Contacts', () => {
   beforeEach(() => {
     seedDatabase();
   });
 
-  it("should retrieve a list of contacts", () => {
+  it('should retrieve a list of contacts', () => {
     expect(getAllContacts().length).toEqual(totalContacts);
   });
 
-  it("should retrieve a list of contacts for a username", () => {
+  it('should retrieve a list of contacts for a username', () => {
     const userToLookup: User = getAllUsers()[0];
 
     const result = getContactsByUsername(userToLookup.username);
@@ -27,7 +27,7 @@ describe("Contacts", () => {
     expect(result[0].userId).toBe(userToLookup.id);
   });
 
-  it("should retrieve a list of contacts for a userId", () => {
+  it('should retrieve a list of contacts for a userId', () => {
     const userToLookup: User = getAllUsers()[0];
 
     const result = getContactsByUserId(userToLookup.id);
@@ -35,7 +35,7 @@ describe("Contacts", () => {
     expect(result[0].userId).toBe(userToLookup.id);
   });
 
-  it("should create a contact for user", () => {
+  it('should create a contact for user', () => {
     const user: User = getRandomUser();
     const contactToBe: User = getRandomUser();
 
@@ -43,7 +43,7 @@ describe("Contacts", () => {
     expect(result.userId).toBe(user.id);
   });
 
-  it("should delete a contact", () => {
+  it('should delete a contact', () => {
     const userToLookup: User = getRandomUser();
 
     const contacts = getContactsByUsername(userToLookup.username);

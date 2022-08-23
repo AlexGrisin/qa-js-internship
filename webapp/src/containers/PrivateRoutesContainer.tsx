@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import { Switch } from "react-router";
+import React, { useEffect } from 'react';
+import { Switch } from 'react-router';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
-import MainLayout from "../components/MainLayout";
-import PrivateRoute from "../components/PrivateRoute";
-import TransactionsContainer from "./TransactionsContainer";
-import UserSettingsContainer from "./UserSettingsContainer";
-import NotificationsContainer from "./NotificationsContainer";
-import BankAccountsContainer from "./BankAccountsContainer";
-import TransactionCreateContainer from "./TransactionCreateContainer";
-import TransactionDetailContainer from "./TransactionDetailContainer";
-import { DataContext, DataSchema, DataEvents } from "../machines/dataMachine";
-import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from "../machines/authMachine";
-import { SnackbarContext, SnackbarSchema, SnackbarEvents } from "../machines/snackbarMachine";
-import { useActor } from "@xstate/react";
-import UserOnboardingContainer from "./UserOnboardingContainer";
+} from 'xstate';
+import MainLayout from '../components/MainLayout';
+import PrivateRoute from '../components/PrivateRoute';
+import TransactionsContainer from './TransactionsContainer';
+import UserSettingsContainer from './UserSettingsContainer';
+import NotificationsContainer from './NotificationsContainer';
+import BankAccountsContainer from './BankAccountsContainer';
+import TransactionCreateContainer from './TransactionCreateContainer';
+import TransactionDetailContainer from './TransactionDetailContainer';
+import { DataContext, DataSchema, DataEvents } from '../machines/dataMachine';
+import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from '../machines/authMachine';
+import { SnackbarContext, SnackbarSchema, SnackbarEvents } from '../machines/snackbarMachine';
+import { useActor } from '@xstate/react';
+import UserOnboardingContainer from './UserOnboardingContainer';
 
 export interface Props {
   isLoggedIn: boolean;
@@ -57,7 +57,7 @@ const PrivateRoutesContainer: React.FC<Props> = ({
   const [, sendNotifications] = useActor(notificationsService);
 
   useEffect(() => {
-    sendNotifications({ type: "FETCH" });
+    sendNotifications({ type: 'FETCH' });
   }, [sendNotifications]);
 
   return (
@@ -67,7 +67,7 @@ const PrivateRoutesContainer: React.FC<Props> = ({
         bankAccountsService={bankAccountsService}
       />
       <Switch>
-        <PrivateRoute isLoggedIn={isLoggedIn} exact path={"/(public|contacts|personal)?"}>
+        <PrivateRoute isLoggedIn={isLoggedIn} exact path={'/(public|contacts|personal)?'}>
           <TransactionsContainer />
         </PrivateRoute>
         <PrivateRoute isLoggedIn={isLoggedIn} exact path="/user/settings">

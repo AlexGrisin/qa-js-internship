@@ -1,4 +1,4 @@
-import { Machine, assign } from "xstate";
+import { Machine, assign } from 'xstate';
 
 interface FilterSchema {
   states: {
@@ -18,19 +18,19 @@ interface FilterSchema {
 }
 
 type DateFilterEvent = {
-  type: "DATE_FILTER";
+  type: 'DATE_FILTER';
   dateRangeStart: string;
   dateRangeEnd: string;
 };
 type AmountFilterEvent = {
-  type: "AMOUNT_FILTER";
+  type: 'AMOUNT_FILTER';
   amountMin: string;
   amountMax: string;
 };
-type DateResetEvent = { type: "DATE_RESET" };
-type AmountResetEvent = { type: "AMOUNT_RESET" };
+type DateResetEvent = { type: 'DATE_RESET' };
+type AmountResetEvent = { type: 'AMOUNT_RESET' };
 type FilterEvents =
-  | { type: "NONE" }
+  | { type: 'NONE' }
   | DateFilterEvent
   | AmountFilterEvent
   | DateResetEvent
@@ -40,41 +40,41 @@ export interface FilterContext {}
 
 export const transactionFiltersMachine = Machine<FilterContext, FilterSchema, FilterEvents>(
   {
-    id: "filters",
-    type: "parallel",
+    id: 'filters',
+    type: 'parallel',
     context: {},
     states: {
       dateRange: {
-        initial: "none",
+        initial: 'none',
         states: {
           none: {
-            entry: "resetDateRange",
+            entry: 'resetDateRange',
             on: {
-              DATE_FILTER: "filter",
+              DATE_FILTER: 'filter',
             },
           },
           filter: {
-            entry: "setDateRange",
+            entry: 'setDateRange',
             on: {
-              DATE_RESET: "none",
+              DATE_RESET: 'none',
             },
           },
         },
       },
       amountRange: {
-        initial: "none",
+        initial: 'none',
         states: {
           none: {
-            entry: "resetAmountRange",
+            entry: 'resetAmountRange',
             on: {
-              AMOUNT_FILTER: "filter",
+              AMOUNT_FILTER: 'filter',
             },
           },
           filter: {
-            entry: "setAmountRange",
+            entry: 'setAmountRange',
             on: {
-              AMOUNT_RESET: "none",
-              AMOUNT_FILTER: "filter",
+              AMOUNT_RESET: 'none',
+              AMOUNT_FILTER: 'filter',
             },
           },
         },

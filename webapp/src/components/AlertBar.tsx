@@ -1,15 +1,15 @@
-import React from "react";
-import { Snackbar } from "@material-ui/core";
+import React from 'react';
+import { Snackbar } from '@material-ui/core';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
-import { SnackbarContext, SnackbarSchema, SnackbarEvents } from "../machines/snackbarMachine";
-import { useActor } from "@xstate/react";
-import { Alert } from "@material-ui/lab";
+} from 'xstate';
+import { SnackbarContext, SnackbarSchema, SnackbarEvents } from '../machines/snackbarMachine';
+import { useActor } from '@xstate/react';
+import { Alert } from '@material-ui/lab';
 
 interface Props {
   snackbarService: Interpreter<
@@ -26,8 +26,8 @@ const AlertBar: React.FC<Props> = ({ snackbarService }) => {
 
   return (
     <Snackbar
-      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-      open={snackbarState?.matches("visible")}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+      open={snackbarState?.matches('visible')}
       autoHideDuration={3000}
     >
       <Alert

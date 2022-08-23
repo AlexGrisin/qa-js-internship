@@ -1,23 +1,23 @@
 ///<reference path="types.ts" />
 
-import express from "express";
+import express from 'express';
 import {
   createNotifications,
   updateNotificationById,
   getUnreadNotificationsByUserId,
-} from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+} from './database';
+import { ensureAuthenticated, validateMiddleware } from './helpers';
 import {
   isNotificationsBodyValidator,
   shortIdValidation,
   isNotificationPatchValidator,
-} from "./validators";
+} from './validators';
 const router = express.Router();
 
 // Routes
 
 //GET /notifications/
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
   /* istanbul ignore next */
   const notifications = getUnreadNotificationsByUserId(req.user?.id!);
 
@@ -27,7 +27,7 @@ router.get("/", ensureAuthenticated, (req, res) => {
 
 //POST /notifications/bulk
 router.post(
-  "/bulk",
+  '/bulk',
   ensureAuthenticated,
   validateMiddleware([...isNotificationsBodyValidator]),
   (req, res) => {
@@ -43,9 +43,9 @@ router.post(
 
 //PATCH /notifications/:notificationId - scoped-user
 router.patch(
-  "/:notificationId",
+  '/:notificationId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("notificationId"), ...isNotificationPatchValidator]),
+  validateMiddleware([shortIdValidation('notificationId'), ...isNotificationPatchValidator]),
   (req, res) => {
     const { notificationId } = req.params;
     /* istanbul ignore next */

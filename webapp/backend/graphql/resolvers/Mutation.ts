@@ -1,4 +1,4 @@
-import { createBankAccountForUser, removeBankAccountById } from "../../database";
+import { createBankAccountForUser, removeBankAccountById } from '../../database';
 
 const Mutation = {
   createBankAccount: (obj: any, args: any, ctx: any) => {

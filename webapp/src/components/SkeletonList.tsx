@@ -1,13 +1,13 @@
-import React from "react";
-import { Skeleton } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/core";
+import React from 'react';
+import { Skeleton } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    minHeight: "100vh",
+    minHeight: '100vh',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
-    width: "95%",
+    width: '95%',
   },
 }));
 

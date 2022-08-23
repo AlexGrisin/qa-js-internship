@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   makeStyles,
   Grid,
@@ -10,25 +10,25 @@ import {
   useTheme,
   useMediaQuery,
   Drawer,
-} from "@material-ui/core";
-import { ArrowDropDown as ArrowDropDownIcon } from "@material-ui/icons";
-import { TransactionAmountRangePayload } from "../models";
+} from '@material-ui/core';
+import { ArrowDropDown as ArrowDropDownIcon } from '@material-ui/icons';
+import { TransactionAmountRangePayload } from '../models';
 import {
   formatAmountRangeValues,
   amountRangeValueText,
   amountRangeValueTextLabel,
   padAmountWithZeros,
   //hasAmountQueryFields
-} from "../utils/transactionUtils";
-import { first, last } from "lodash/fp";
+} from '../utils/transactionUtils';
+import { first, last } from 'lodash/fp';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   amountRangeRoot: {
     width: 300,
     margin: 30,
   },
   amountRangeTitleRow: {
-    width: "100%",
+    width: '100%',
   },
   amountRangeTitle: {
     width: 225,
@@ -51,7 +51,7 @@ const TransactionListAmountRangeFilter: React.FC<TransactionListAmountRangeFilte
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
+  const xsBreakpoint = useMediaQuery(theme.breakpoints.only('xs'));
 
   const initialAmountRange = [0, 100];
   const [amountRangeValue, setAmountRangeValue] = React.useState<number[]>(initialAmountRange);
@@ -75,7 +75,7 @@ const TransactionListAmountRangeFilter: React.FC<TransactionListAmountRangeFilte
   };
 
   const amountRangeOpen = Boolean(amountRangeAnchorEl);
-  const amountRangeId = amountRangeOpen ? "amount-range-popover" : undefined;
+  const amountRangeId = amountRangeOpen ? 'amount-range-popover' : undefined;
 
   const AmountRangeFilter = () => (
     <Grid
@@ -148,12 +148,12 @@ const TransactionListAmountRangeFilter: React.FC<TransactionListAmountRangeFilte
           anchorEl={amountRangeAnchorEl}
           onClose={handleAmountRangeClose}
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: 'bottom',
+            horizontal: 'left',
           }}
           transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
+            vertical: 'top',
+            horizontal: 'left',
           }}
         >
           <AmountRangeFilter />

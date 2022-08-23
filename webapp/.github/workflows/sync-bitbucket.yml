@@ -26,11 +26,10 @@ jobs:
           key: ${{ secrets.BITBUCKET_SSH_KEY }}
           name: id_rsa # optional
           known_hosts: ${{ secrets.BITBUCKET_KNOWN_HOSTS }}
-          config: 
-            Host bitbucket.org
-              User git
-              IdentityFile ~/.ssh/id_rsa
-              IdentitiesOnly yes 
+          config: Host bitbucket.org
+            User git
+            IdentityFile ~/.ssh/id_rsa
+            IdentitiesOnly yes
 
       - uses: franzdiebold/github-env-vars-action@v2
       - name: sync with bitbucket

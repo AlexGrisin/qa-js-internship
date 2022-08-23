@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useActor, useMachine } from "@xstate/react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Container, CssBaseline } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import { useActor, useMachine } from '@xstate/react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container, CssBaseline } from '@material-ui/core';
 
-import { snackbarMachine } from "../machines/snackbarMachine";
-import { notificationsMachine } from "../machines/notificationsMachine";
-import { authService } from "../machines/authMachine";
-import AlertBar from "../components/AlertBar";
-import { bankAccountsMachine } from "../machines/bankAccountsMachine";
-import PrivateRoutesContainer from "./PrivateRoutesContainer";
-import { GoogleLogin, useGoogleLogin } from "react-google-login";
+import { snackbarMachine } from '../machines/snackbarMachine';
+import { notificationsMachine } from '../machines/notificationsMachine';
+import { authService } from '../machines/authMachine';
+import AlertBar from '../components/AlertBar';
+import { bankAccountsMachine } from '../machines/bankAccountsMachine';
+import PrivateRoutesContainer from './PrivateRoutesContainer';
+import { GoogleLogin, useGoogleLogin } from 'react-google-login';
 
 // @ts-ignore
 if (window.Cypress) {
@@ -18,15 +18,15 @@ if (window.Cypress) {
   window.authService = authService;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
+    display: 'flex',
   },
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 }));
 
@@ -44,8 +44,8 @@ const AppGoogle: React.FC = () => {
   if (window.Cypress) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      const { user, token } = JSON.parse(localStorage.getItem("googleCypress")!);
-      authService.send("GOOGLE", {
+      const { user, token } = JSON.parse(localStorage.getItem('googleCypress')!);
+      authService.send('GOOGLE', {
         user,
         token,
       });
@@ -54,17 +54,17 @@ const AppGoogle: React.FC = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGoogleLogin({
       clientId: process.env.REACT_APP_GOOGLE_CLIENTID!,
-      onSuccess: (res) => {
-        console.log("onSuccess", res);
+      onSuccess: res => {
+        console.log('onSuccess', res);
         // @ts-ignore
-        authService.send("GOOGLE", { user: res.profileObj, token: res.tokenId });
+        authService.send('GOOGLE', { user: res.profileObj, token: res.tokenId });
       },
-      cookiePolicy: "single_host_origin",
+      cookiePolicy: 'single_host_origin',
       isSignedIn: true,
     });
   }
 
-  const isLoggedIn = authState.matches("authorized");
+  const isLoggedIn = authState.matches('authorized');
 
   return (
     <div className={classes.root}>
@@ -80,14 +80,14 @@ const AppGoogle: React.FC = () => {
         />
       )}
 
-      {authState.matches("unauthorized") && (
+      {authState.matches('unauthorized') && (
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENTID!}
               buttonText="Login"
-              cookiePolicy={"single_host_origin"}
+              cookiePolicy={'single_host_origin'}
             />
           </div>
         </Container>

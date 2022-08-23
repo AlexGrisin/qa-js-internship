@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   Button,
   Box,
@@ -10,23 +10,23 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
-import { isEmpty } from "lodash/fp";
-import { useActor, useMachine } from "@xstate/react";
+} from 'xstate';
+import { isEmpty } from 'lodash/fp';
+import { useActor, useMachine } from '@xstate/react';
 
-import { userOnboardingMachine } from "../machines/userOnboardingMachine";
-import BankAccountForm from "../components/BankAccountForm";
-import { DataContext, DataEvents, DataSchema } from "../machines/dataMachine";
-import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from "../machines/authMachine";
-import NavigatorIllustration from "../components/SvgUndrawNavigatorA479";
-import PersonalFinance from "../components/SvgUndrawPersonalFinanceTqcd";
+import { userOnboardingMachine } from '../machines/userOnboardingMachine';
+import BankAccountForm from '../components/BankAccountForm';
+import { DataContext, DataEvents, DataSchema } from '../machines/dataMachine';
+import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from '../machines/authMachine';
+import NavigatorIllustration from '../components/SvgUndrawNavigatorA479';
+import PersonalFinance from '../components/SvgUndrawPersonalFinanceTqcd';
 
 export interface Props {
   authService: Interpreter<AuthMachineContext, AuthMachineSchema, AuthMachineEvents, any, any>;
@@ -41,7 +41,7 @@ export interface Props {
 
 const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsService }) => {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [bankAccountsState, sendBankAccounts] = useActor(bankAccountsService);
   const [authState, sendAuth] = useActor(authService);
   const [userOnboardingState, sendUserOnboarding] = useMachine(userOnboardingMachine);
@@ -49,36 +49,36 @@ const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsSer
   const currentUser = authState?.context?.user;
 
   useEffect(() => {
-    sendBankAccounts("FETCH");
+    sendBankAccounts('FETCH');
   }, [sendBankAccounts]);
 
   const noBankAccounts =
-    bankAccountsState?.matches("success.withoutData") &&
+    bankAccountsState?.matches('success.withoutData') &&
     isEmpty(bankAccountsState?.context?.results);
 
   const dialogIsOpen =
-    (userOnboardingState.matches("stepTwo") && !noBankAccounts) ||
-    (userOnboardingState.matches("stepThree") && !noBankAccounts) ||
-    (!userOnboardingState.matches("done") && noBankAccounts) ||
+    (userOnboardingState.matches('stepTwo') && !noBankAccounts) ||
+    (userOnboardingState.matches('stepThree') && !noBankAccounts) ||
+    (!userOnboardingState.matches('done') && noBankAccounts) ||
     false;
 
-  const nextStep = () => sendUserOnboarding("NEXT");
+  const nextStep = () => sendUserOnboarding('NEXT');
 
   const createBankAccountWithNextStep = (payload: any) => {
-    sendBankAccounts({ type: "CREATE", ...payload });
+    sendBankAccounts({ type: 'CREATE', ...payload });
     nextStep();
   };
 
   return (
     <Dialog data-test="user-onboarding-dialog" fullScreen={fullScreen} open={dialogIsOpen}>
       <DialogTitle data-test="user-onboarding-dialog-title">
-        {userOnboardingState.matches("stepOne") && "Get Started with Real World App"}
-        {userOnboardingState.matches("stepTwo") && "Create Bank Account"}
-        {userOnboardingState.matches("stepThree") && "Finished"}
+        {userOnboardingState.matches('stepOne') && 'Get Started with Real World App'}
+        {userOnboardingState.matches('stepTwo') && 'Create Bank Account'}
+        {userOnboardingState.matches('stepThree') && 'Finished'}
       </DialogTitle>
       <DialogContent data-test="user-onboarding-dialog-content">
         <Box display="flex" alignItems="center" justifyContent="center">
-          {userOnboardingState.matches("stepOne") && (
+          {userOnboardingState.matches('stepOne') && (
             <>
               <NavigatorIllustration />
               <br />
@@ -90,14 +90,14 @@ const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsSer
               </DialogContentText>
             </>
           )}
-          {userOnboardingState.matches("stepTwo") && (
+          {userOnboardingState.matches('stepTwo') && (
             <BankAccountForm
               userId={currentUser?.id!}
               createBankAccount={createBankAccountWithNextStep}
               onboarding
             />
           )}
-          {userOnboardingState.matches("stepThree") && (
+          {userOnboardingState.matches('stepThree') && (
             <>
               <PersonalFinance />
               <br />
@@ -115,8 +115,8 @@ const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsSer
         <Grid container justify="space-between">
           <Grid item>
             <Button
-              style={{ paddingRight: "80%" }}
-              onClick={/* istanbul ignore next */ () => sendAuth("LOGOUT")}
+              style={{ paddingRight: '80%' }}
+              onClick={/* istanbul ignore next */ () => sendAuth('LOGOUT')}
               color="secondary"
               data-test="user-onboarding-logout"
             >
@@ -124,9 +124,9 @@ const UserOnboardingContainer: React.FC<Props> = ({ authService, bankAccountsSer
             </Button>
           </Grid>
           <Grid item>
-            {!userOnboardingState.matches("stepTwo") && (
+            {!userOnboardingState.matches('stepTwo') && (
               <Button onClick={() => nextStep()} color="primary" data-test="user-onboarding-next">
-                {userOnboardingState.matches("stepThree") ? "Done" : "Next"}
+                {userOnboardingState.matches('stepThree') ? 'Done' : 'Next'}
               </Button>
             )}
           </Grid>

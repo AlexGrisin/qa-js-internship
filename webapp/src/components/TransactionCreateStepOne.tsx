@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles, Paper } from "@material-ui/core";
-import UsersList from "./UsersList";
-import { User } from "../models";
-import UserListSearchForm from "./UserListSearchForm";
+import React from 'react';
+import { makeStyles, Paper } from '@material-ui/core';
+import UsersList from './UsersList';
+import { User } from '../models';
+import UserListSearchForm from './UserListSearchForm';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     //marginTop: theme.spacing(2),
     padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
 }));
 

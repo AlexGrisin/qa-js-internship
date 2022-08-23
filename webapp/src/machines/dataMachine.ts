@@ -1,5 +1,5 @@
-import { Machine, assign } from "xstate";
-import { concat } from "lodash/fp";
+import { Machine, assign } from 'xstate';
+import { concat } from 'lodash/fp';
 
 export interface DataSchema {
   states: {
@@ -19,13 +19,13 @@ export interface DataSchema {
   };
 }
 
-type SuccessEvent = { type: "SUCCESS"; results: any[]; pageData: object };
-type FailureEvent = { type: "FAILURE"; message: string };
+type SuccessEvent = { type: 'SUCCESS'; results: any[]; pageData: object };
+type FailureEvent = { type: 'FAILURE'; message: string };
 export type DataEvents =
-  | { type: "FETCH" }
-  | { type: "UPDATE" }
-  | { type: "CREATE" }
-  | { type: "DELETE" }
+  | { type: 'FETCH' }
+  | { type: 'UPDATE' }
+  | { type: 'CREATE' }
+  | { type: 'DELETE' }
   | SuccessEvent
   | FailureEvent;
 
@@ -39,7 +39,7 @@ export const dataMachine = (machineId: string) =>
   Machine<DataContext, DataSchema, DataEvents>(
     {
       id: machineId,
-      initial: "idle",
+      initial: 'idle',
       context: {
         pageData: {},
         results: [],
@@ -48,53 +48,53 @@ export const dataMachine = (machineId: string) =>
       states: {
         idle: {
           on: {
-            FETCH: "loading",
-            CREATE: "creating",
-            UPDATE: "updating",
-            DELETE: "deleting",
+            FETCH: 'loading',
+            CREATE: 'creating',
+            UPDATE: 'updating',
+            DELETE: 'deleting',
           },
         },
         loading: {
           invoke: {
-            src: "fetchData",
-            onDone: { target: "success" },
-            onError: { target: "failure", actions: "setMessage" },
+            src: 'fetchData',
+            onDone: { target: 'success' },
+            onError: { target: 'failure', actions: 'setMessage' },
           },
         },
         updating: {
           invoke: {
-            src: "updateData",
-            onDone: { target: "loading" },
-            onError: { target: "failure", actions: "setMessage" },
+            src: 'updateData',
+            onDone: { target: 'loading' },
+            onError: { target: 'failure', actions: 'setMessage' },
           },
         },
         creating: {
           invoke: {
-            src: "createData",
-            onDone: { target: "loading" },
-            onError: { target: "failure", actions: "setMessage" },
+            src: 'createData',
+            onDone: { target: 'loading' },
+            onError: { target: 'failure', actions: 'setMessage' },
           },
         },
         deleting: {
           invoke: {
-            src: "deleteData",
-            onDone: { target: "loading" },
-            onError: { target: "failure", actions: "setMessage" },
+            src: 'deleteData',
+            onDone: { target: 'loading' },
+            onError: { target: 'failure', actions: 'setMessage' },
           },
         },
         success: {
-          entry: ["setResults", "setPageData"],
+          entry: ['setResults', 'setPageData'],
           on: {
-            FETCH: "loading",
-            CREATE: "creating",
-            UPDATE: "updating",
-            DELETE: "deleting",
+            FETCH: 'loading',
+            CREATE: 'creating',
+            UPDATE: 'updating',
+            DELETE: 'deleting',
           },
-          initial: "unknown",
+          initial: 'unknown',
           states: {
             unknown: {
               on: {
-                "": [{ target: "withData", cond: "hasData" }, { target: "withoutData" }],
+                '': [{ target: 'withData', cond: 'hasData' }, { target: 'withoutData' }],
               },
             },
             withData: {},
@@ -102,9 +102,9 @@ export const dataMachine = (machineId: string) =>
           },
         },
         failure: {
-          entry: ["setMessage"],
+          entry: ['setMessage'],
           on: {
-            FETCH: "loading",
+            FETCH: 'loading',
           },
         },
       },

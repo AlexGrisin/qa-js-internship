@@ -1,31 +1,31 @@
-import React from "react";
-import { Button, Typography, Grid, Avatar, Paper, IconButton, makeStyles } from "@material-ui/core";
-import { AvatarGroup } from "@material-ui/lab";
-import { ThumbUpAltOutlined as LikeIcon, CommentRounded as CommentIcon } from "@material-ui/icons";
-import { TransactionResponseItem, TransactionRequestStatus, User } from "../models";
-import CommentForm from "./CommentForm";
+import React from 'react';
+import { Button, Typography, Grid, Avatar, Paper, IconButton, makeStyles } from '@material-ui/core';
+import { AvatarGroup } from '@material-ui/lab';
+import { ThumbUpAltOutlined as LikeIcon, CommentRounded as CommentIcon } from '@material-ui/icons';
+import { TransactionResponseItem, TransactionRequestStatus, User } from '../models';
+import CommentForm from './CommentForm';
 import {
   isPendingRequestTransaction,
   receiverIsCurrentUser,
   currentUserLikesTransaction,
-} from "../utils/transactionUtils";
-import CommentsList from "./CommentList";
-import TransactionTitle from "./TransactionTitle";
-import TransactionAmount from "./TransactionAmount";
+} from '../utils/transactionUtils';
+import CommentsList from './CommentList';
+import TransactionTitle from './TransactionTitle';
+import TransactionAmount from './TransactionAmount';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
   paperComments: {
     marginTop: theme.spacing(6),
     padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
   avatar: {
     width: theme.spacing(2),
@@ -41,31 +41,31 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
   },
   redButton: {
-    backgrounColor: "red",
-    color: "#ffffff",
-    backgroundColor: "red",
+    backgrounColor: 'red',
+    color: '#ffffff',
+    backgroundColor: 'red',
     paddingTop: 5,
     paddingBottom: 5,
     paddingRight: 20,
-    fontWeight: "bold",
-    "&:hover": {
-      backgroundColor: "red",
-      borderColor: "red",
-      boxShadow: "none",
+    fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: 'red',
+      borderColor: 'red',
+      boxShadow: 'none',
     },
   },
   greenButton: {
     marginRight: theme.spacing(2),
-    color: "#ffffff",
-    backgroundColor: "#00C853",
+    color: '#ffffff',
+    backgroundColor: '#00C853',
     paddingTop: 5,
     paddingBottom: 5,
     paddingRight: 20,
-    fontWeight: "bold",
-    "&:hover": {
-      backgroundColor: "#4CAF50",
-      borderColor: "#00C853",
-      boxShadow: "none",
+    fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: '#4CAF50',
+      borderColor: '#00C853',
+      boxShadow: 'none',
     },
   },
 }));
@@ -143,7 +143,7 @@ const TransactionDetail: React.FC<TransactionProps> = ({
         <Grid item>
           <Grid container direction="row" justify="flex-start" alignItems="center" spacing={2}>
             <Grid item data-test={`transaction-like-count-${transaction.id}`}>
-              {transaction.likes ? transaction.likes.length : 0}{" "}
+              {transaction.likes ? transaction.likes.length : 0}{' '}
             </Grid>
             <Grid item>
               <IconButton
@@ -194,7 +194,7 @@ const TransactionDetail: React.FC<TransactionProps> = ({
           <Grid item>
             <CommentForm
               transactionId={transaction.id}
-              transactionComment={(payload) => transactionComment(payload)}
+              transactionComment={payload => transactionComment(payload)}
             />
           </Grid>
         </Grid>

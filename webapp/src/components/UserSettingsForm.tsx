@@ -1,8 +1,8 @@
-import React from "react";
-import { makeStyles, TextField, Button, Grid } from "@material-ui/core";
-import { Formik, Form, Field, FieldProps } from "formik";
-import { string, object, mixed } from "yup";
-import { User, DefaultPrivacyLevel, UserSettingsPayload } from "../models";
+import React from 'react';
+import { makeStyles, TextField, Button, Grid } from '@material-ui/core';
+import { Formik, Form, Field, FieldProps } from 'formik';
+import { string, object, mixed } from 'yup';
+import { User, DefaultPrivacyLevel, UserSettingsPayload } from '../models';
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -10,24 +10,24 @@ const phoneRegExp =
 const DefaultPrivacyLevelValues = Object.values(DefaultPrivacyLevel);
 
 const validationSchema = object({
-  firstName: string().required("Enter a first name"),
-  lastName: string().required("Enter a last name"),
-  email: string().email("Must contain a valid email address").required("Enter an email address"),
+  firstName: string().required('Enter a first name'),
+  lastName: string().required('Enter a last name'),
+  email: string().email('Must contain a valid email address').required('Enter an email address'),
   phoneNumber: string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Enter a phone number"),
+    .matches(phoneRegExp, 'Phone number is not valid')
+    .required('Enter a phone number'),
   defaultPrivacyLevel: mixed<DefaultPrivacyLevel>().oneOf(DefaultPrivacyLevelValues),
 });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -69,12 +69,12 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 margin="dense"
                 fullWidth
                 required
-                id={"user-settings-firstName-input"}
+                id={'user-settings-firstName-input'}
                 type="text"
                 placeholder="First Name"
-                inputProps={{ "data-test": "user-settings-firstName-input" }}
+                inputProps={{ 'data-test': 'user-settings-firstName-input' }}
                 error={(touched || value !== initialValue) && Boolean(error)}
-                helperText={touched || value !== initialValue ? error : ""}
+                helperText={touched || value !== initialValue ? error : ''}
                 {...field}
               />
             )}
@@ -86,12 +86,12 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 margin="dense"
                 fullWidth
                 required
-                id={"user-settings-lastName-input"}
+                id={'user-settings-lastName-input'}
                 type="text"
                 placeholder="Last Name"
-                inputProps={{ "data-test": "user-settings-lastName-input" }}
+                inputProps={{ 'data-test': 'user-settings-lastName-input' }}
                 error={(touched || value !== initialValue) && Boolean(error)}
-                helperText={touched || value !== initialValue ? error : ""}
+                helperText={touched || value !== initialValue ? error : ''}
                 {...field}
               />
             )}
@@ -103,12 +103,12 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 margin="dense"
                 fullWidth
                 required
-                id={"user-settings-email-input"}
+                id={'user-settings-email-input'}
                 type="text"
                 placeholder="Email"
-                inputProps={{ "data-test": "user-settings-email-input" }}
+                inputProps={{ 'data-test': 'user-settings-email-input' }}
                 error={(touched || value !== initialValue) && Boolean(error)}
-                helperText={touched || value !== initialValue ? error : ""}
+                helperText={touched || value !== initialValue ? error : ''}
                 {...field}
               />
             )}
@@ -120,12 +120,12 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 margin="dense"
                 fullWidth
                 required
-                id={"user-settings-phoneNumber-input"}
+                id={'user-settings-phoneNumber-input'}
                 type="text"
                 placeholder="Phone Number"
-                inputProps={{ "data-test": "user-settings-phoneNumber-input" }}
+                inputProps={{ 'data-test': 'user-settings-phoneNumber-input' }}
                 error={(touched || value !== initialValue) && Boolean(error)}
-                helperText={touched || value !== initialValue ? error : ""}
+                helperText={touched || value !== initialValue ? error : ''}
                 {...field}
               />
             )}

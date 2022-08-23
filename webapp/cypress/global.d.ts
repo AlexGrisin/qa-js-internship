@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
 declare namespace Cypress {
-  import { authService } from "../src/machines/authMachine";
-  import { createTransactionService } from "../src/machines/createTransactionMachine";
-  import { publicTransactionService } from "../src/machines/publicTransactionsMachine";
-  import { contactsTransactionService } from "../src/machines/contactsTransactionsMachine";
-  import { personalTransactionService } from "../src/machines/personalTransactionsMachine";
+  import { authService } from '../src/machines/authMachine';
+  import { createTransactionService } from '../src/machines/createTransactionMachine';
+  import { publicTransactionService } from '../src/machines/publicTransactionsMachine';
+  import { contactsTransactionService } from '../src/machines/contactsTransactionsMachine';
+  import { personalTransactionService } from '../src/machines/personalTransactionsMachine';
   import {
     User,
     BankAccount,
@@ -14,7 +14,7 @@ declare namespace Cypress {
     Transaction,
     BankTransfer,
     Contact,
-  } from "../src/models";
+  } from '../src/models';
 
   interface CustomWindow extends Window {
     authService: typeof authService;
@@ -51,7 +51,7 @@ declare namespace Cypress {
      *  Cypress task for directly querying to the database within tests
      */
     task(
-      event: "filter:database",
+      event: 'filter:database',
       arg: dbQueryArg,
       options?: Partial<Loggable & Timeoutable>
     ): Chainable<any[]>;
@@ -60,7 +60,7 @@ declare namespace Cypress {
      *  Cypress task for directly querying to the database within tests
      */
     task(
-      event: "find:database",
+      event: 'find:database',
       arg?: any,
       options?: Partial<Loggable & Timeoutable>
     ): Chainable<any>;
@@ -68,12 +68,12 @@ declare namespace Cypress {
     /**
      * Find a single entity via database query
      */
-    database(operation: "find", entity: string, query?: object, log?: boolean): Chainable<any>;
+    database(operation: 'find', entity: string, query?: object, log?: boolean): Chainable<any>;
 
     /**
      * Filter for data entities via database query
      */
-    database(operation: "filter", entity: string, query?: object, log?: boolean): Chainable<any>;
+    database(operation: 'filter', entity: string, query?: object, log?: boolean): Chainable<any>;
 
     /**
      * Fetch React component instance associated with received element subject

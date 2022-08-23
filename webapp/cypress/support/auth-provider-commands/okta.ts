@@ -2,24 +2,24 @@
 ///<reference path="../../global.d.ts" />
 
 // @ts-ignore
-import { OktaAuth } from "@okta/okta-auth-js";
+import { OktaAuth } from '@okta/okta-auth-js';
 
-import { frontendPort } from "../../../src/utils/portUtils";
+import { frontendPort } from '../../../src/utils/portUtils';
 
 // Okta
-Cypress.Commands.add("loginByOktaApi", (username: string, password?: string) => {
+Cypress.Commands.add('loginByOktaApi', (username: string, password?: string) => {
   const log = Cypress.log({
-    displayName: "OKTA LOGIN",
+    displayName: 'OKTA LOGIN',
     message: [`🔐 Authenticating | ${username}`],
     // @ts-ignore
     autoEnd: false,
   });
 
-  log.snapshot("before");
+  log.snapshot('before');
 
   cy.request({
-    method: "POST",
-    url: `https://${Cypress.env("okta_domain")}/api/v1/authn`,
+    method: 'POST',
+    url: `https://${Cypress.env('okta_domain')}/api/v1/authn`,
     body: {
       username,
       password,
@@ -27,10 +27,10 @@ Cypress.Commands.add("loginByOktaApi", (username: string, password?: string) => 
   }).then(({ body }) => {
     const user = body._embedded.user;
     const config = {
-      issuer: `https://${Cypress.env("okta_domain")}/oauth2/default`,
-      clientId: Cypress.env("okta_client_id"),
+      issuer: `https://${Cypress.env('okta_domain')}/oauth2/default`,
+      clientId: Cypress.env('okta_client_id'),
       redirectUri: `http://localhost:${frontendPort}/implicit/callback`,
-      scope: ["openid", "email", "profile"],
+      scope: ['openid', 'email', 'profile'],
     };
 
     const authClient = new OktaAuth(config);
@@ -51,12 +51,12 @@ Cypress.Commands.add("loginByOktaApi", (username: string, password?: string) => 
           },
         };
 
-        window.localStorage.setItem("oktaCypress", JSON.stringify(userItem));
+        window.localStorage.setItem('oktaCypress', JSON.stringify(userItem));
 
-        log.snapshot("after");
+        log.snapshot('after');
         log.end();
       });
   });
 
-  cy.visit("/");
+  cy.visit('/');
 });

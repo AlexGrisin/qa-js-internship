@@ -17,11 +17,11 @@ batch:
           - public.ecr.aws/cypress-io/cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
         variables:
           CY_GROUP_SPEC:
-            - "UI - Chrome|chrome|cypress/tests/ui/*"
-            - "UI - Chrome - Mobile|chrome|cypress/tests/ui/*|viewportWidth=375,viewportHeight=667"
-            - "API|chrome|cypress/tests/api/*"
-            - "UI - Firefox|firefox|cypress/tests/ui/*"
-            - "UI - Firefox - Mobile|firefox|cypress/tests/ui/*|viewportWidth=375,viewportHeight=667"
+            - 'UI - Chrome|chrome|cypress/tests/ui/*'
+            - 'UI - Chrome - Mobile|chrome|cypress/tests/ui/*|viewportWidth=375,viewportHeight=667'
+            - 'API|chrome|cypress/tests/api/*'
+            - 'UI - Firefox|firefox|cypress/tests/ui/*'
+            - 'UI - Firefox - Mobile|firefox|cypress/tests/ui/*|viewportWidth=375,viewportHeight=667'
           WORKERS:
             - 1
             - 2

@@ -3,7 +3,7 @@ name: Cypress Tests
 on:
   push:
     branches-ignore:
-      - "renovate/**"
+      - 'renovate/**'
 
 jobs:
   install:
@@ -95,16 +95,16 @@ jobs:
       - name: __e Dir
         run: ls /__e
 
-      - name: "UI Tests - Chrome"
+      - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v4
         with:
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
-          group: "UI - Chrome"
+          group: 'UI - Chrome'
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:
@@ -113,7 +113,7 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEBUG: "cypress:server:args"
+          DEBUG: 'cypress:server:args'
 
   ui-chrome-mobile-tests:
     timeout-minutes: 15
@@ -141,17 +141,17 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Chrome - Mobile"
+      - name: 'UI Tests - Chrome - Mobile'
         uses: cypress-io/github-action@v4
         with:
-          config: "viewportWidth=375,viewportHeight=667"
+          config: 'viewportWidth=375,viewportHeight=667'
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
-          group: "UI - Chrome - Mobile"
+          group: 'UI - Chrome - Mobile'
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:
@@ -187,16 +187,16 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Firefox"
+      - name: 'UI Tests - Firefox'
         uses: cypress-io/github-action@v4
         with:
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: firefox
           record: true
           parallel: true
-          group: "UI - Firefox"
+          group: 'UI - Firefox'
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:
@@ -232,17 +232,17 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Firefox - Mobile"
+      - name: 'UI Tests - Firefox - Mobile'
         uses: cypress-io/github-action@v4
         with:
-          config: "viewportWidth=375,viewportHeight=667"
+          config: 'viewportWidth=375,viewportHeight=667'
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: firefox
           record: true
           parallel: true
-          group: "UI - Firefox - Mobile"
+          group: 'UI - Firefox - Mobile'
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:
@@ -275,15 +275,15 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Electron - Windows"
+      - name: 'UI Tests - Electron - Windows'
         uses: cypress-io/github-action@v4
         with:
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           record: true
           parallel: true
-          group: "UI - Electron - Windows"
+          group: 'UI - Electron - Windows'
           spec: cypress/tests/ui/*
           config-file: cypress.config.js
         env:

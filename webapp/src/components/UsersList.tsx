@@ -1,8 +1,8 @@
-import React from "react";
-import { List } from "@material-ui/core";
+import React from 'react';
+import { List } from '@material-ui/core';
 
-import UserListItem from "./UserListItem";
-import { User } from "../models";
+import UserListItem from './UserListItem';
+import { User } from '../models';
 
 export interface UsersListProps {
   users: User[];

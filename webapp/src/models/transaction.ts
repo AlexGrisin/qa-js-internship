@@ -1,16 +1,16 @@
-import { DefaultPrivacyLevel } from "./user";
-import { Like, Comment } from ".";
+import { DefaultPrivacyLevel } from './user';
+import { Like, Comment } from '.';
 
 export enum TransactionStatus {
-  pending = "pending",
-  incomplete = "incomplete",
-  complete = "complete",
+  pending = 'pending',
+  incomplete = 'incomplete',
+  complete = 'complete',
 }
 
 export enum TransactionRequestStatus {
-  pending = "pending",
-  accepted = "accepted",
-  rejected = "rejected",
+  pending = 'pending',
+  accepted = 'accepted',
+  rejected = 'rejected',
 }
 
 export interface Transaction {
@@ -61,16 +61,16 @@ export type TransactionScenario = {
   requestStatus: TransactionRequestStatus | string;
 };
 
-export type TransactionPayload = Omit<Transaction, "id" | "uuid" | "createdAt" | "modifiedAt">;
+export type TransactionPayload = Omit<Transaction, 'id' | 'uuid' | 'createdAt' | 'modifiedAt'>;
 
 export type TransactionCreatePayload = Partial<
-  Pick<Transaction, "senderId" | "receiverId" | "description"> & {
+  Pick<Transaction, 'senderId' | 'receiverId' | 'description'> & {
     amount: string;
     transactionType: string;
   }
 >;
 
-export type TransactionUpdateActionPayload = Pick<Transaction, "id" | "requestStatus">;
+export type TransactionUpdateActionPayload = Pick<Transaction, 'id' | 'requestStatus'>;
 
 type TransactionQueryBase = {
   dateRangeStart?: string;
@@ -85,17 +85,17 @@ type TransactionQueryBase = {
 export type TransactionQueryPayload = Partial<TransactionQueryBase>;
 
 export type TransactionDateRangePayload = Partial<
-  Pick<TransactionQueryPayload, "dateRangeStart" | "dateRangeEnd">
+  Pick<TransactionQueryPayload, 'dateRangeStart' | 'dateRangeEnd'>
 >;
 
 export type TransactionAmountRangePayload = Partial<
-  Pick<TransactionQueryPayload, "amountMin" | "amountMax">
+  Pick<TransactionQueryPayload, 'amountMin' | 'amountMax'>
 >;
 
-export type TransactionPaginationPayload = Partial<Pick<TransactionQueryPayload, "page" | "limit">>;
+export type TransactionPaginationPayload = Partial<Pick<TransactionQueryPayload, 'page' | 'limit'>>;
 
 export type TransactionClearFiltersPayload = {
-  filterType: "date" | "amount";
+  filterType: 'date' | 'amount';
 };
 
 export type TransactionPagination = {

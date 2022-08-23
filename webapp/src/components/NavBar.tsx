@@ -1,13 +1,13 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
-import { useActor } from "@xstate/react";
+} from 'xstate';
+import { useActor } from '@xstate/react';
 import {
   makeStyles,
   AppBar,
@@ -19,28 +19,28 @@ import {
   useTheme,
   useMediaQuery,
   Link,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   Menu as MenuIcon,
   Notifications as NotificationsIcon,
   AttachMoney as AttachMoneyIcon,
-} from "@material-ui/icons";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+} from '@material-ui/icons';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
-import { DataContext, DataEvents, DataSchema } from "../machines/dataMachine";
-import TransactionNavTabs from "./TransactionNavTabs";
-import RWALogo from "./SvgRwaLogo";
-import RWALogoIcon from "./SvgRwaIconLogo";
+import { DataContext, DataEvents, DataSchema } from '../machines/dataMachine';
+import TransactionNavTabs from './TransactionNavTabs';
+import RWALogo from './SvgRwaLogo';
+import RWALogoIcon from './SvgRwaIconLogo';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -48,38 +48,38 @@ const useStyles = makeStyles((theme) => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButtonHidden: {
-    display: "none",
+    display: 'none',
   },
   title: {
     flexGrow: 1,
-    textAlign: "center",
+    textAlign: 'center',
   },
   logo: {
-    color: "white",
-    verticalAlign: "bottom",
+    color: 'white',
+    verticalAlign: 'bottom',
   },
   newTransactionButton: {
     fontSize: 16,
-    backgroundColor: "#00C853",
+    backgroundColor: '#00C853',
     paddingTop: 5,
     paddingBottom: 5,
     paddingRight: 20,
-    fontWeight: "bold",
-    "&:hover": {
-      backgroundColor: "#4CAF50",
-      borderColor: "#00C853",
-      boxShadow: "none",
+    fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: '#4CAF50',
+      borderColor: '#00C853',
+      boxShadow: 'none',
     },
   },
   customBadge: {
-    backgroundColor: "red",
-    color: "white",
+    backgroundColor: 'red',
+    color: 'white',
   },
 }));
 
@@ -102,7 +102,7 @@ const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notifications
   const [notificationsState] = useActor(notificationsService);
 
   const allNotifications = notificationsState?.context?.results;
-  const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
+  const xsBreakpoint = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}>
@@ -124,7 +124,7 @@ const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notifications
           className={classes.title}
           data-test="app-name-logo"
         >
-          <Link to="/" style={{ color: "#fff", textDecoration: "none" }} component={RouterLink}>
+          <Link to="/" style={{ color: '#fff', textDecoration: 'none' }} component={RouterLink}>
             {xsBreakpoint ? (
               <RWALogoIcon className={classes.logo} />
             ) : (
@@ -157,7 +157,7 @@ const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notifications
           </Badge>
         </IconButton>
       </Toolbar>
-      {(match.pathname === "/" || RegExp("/(?:public|contacts|personal)").test(match.pathname)) && (
+      {(match.pathname === '/' || RegExp('/(?:public|contacts|personal)').test(match.pathname)) && (
         <TransactionNavTabs />
       )}
     </AppBar>

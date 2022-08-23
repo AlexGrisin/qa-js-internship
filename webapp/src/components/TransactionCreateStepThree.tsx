@@ -1,26 +1,26 @@
-import React from "react";
-import { Link as RouterLink, useHistory } from "react-router-dom";
-import { Paper, Typography, Grid, Avatar, Box, Button, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { Paper, Typography, Grid, Avatar, Box, Button, makeStyles } from '@material-ui/core';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
+} from 'xstate';
 import {
   CreateTransactionMachineContext,
   CreateTransactionMachineEvents,
   CreateTransactionMachineSchema,
-} from "../machines/createTransactionMachine";
-import { useActor } from "@xstate/react";
-import { formatAmount } from "../utils/transactionUtils";
+} from '../machines/createTransactionMachine';
+import { useActor } from '@xstate/react';
+import { formatAmount } from '../utils/transactionUtils';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 }));
 
@@ -57,7 +57,7 @@ const TransactionCreateStepThree: React.FC<TransactionCreateStepThreeProps> = ({
         width="95%"
         min-height={200}
         height={200}
-        style={{ paddingTop: "5%" }}
+        style={{ paddingTop: '5%' }}
       >
         <Grid container direction="row" justify="space-around" alignItems="center" spacing={4}>
           <Grid item>
@@ -79,14 +79,14 @@ const TransactionCreateStepThree: React.FC<TransactionCreateStepThreeProps> = ({
         justifyContent="center"
         width="100%"
         height="100"
-        style={{ paddingBottom: "5%" }}
+        style={{ paddingBottom: '5%' }}
       >
         <Grid container direction="row" justify="center" alignItems="center">
           <Grid item>
             <Typography component="h2" variant="h6" color="primary" gutterBottom>
-              {transactionDetails?.transactionType === "payment" ? "Paid " : "Requested "}
+              {transactionDetails?.transactionType === 'payment' ? 'Paid ' : 'Requested '}
               {transactionDetails?.amount &&
-                formatAmount(parseInt(transactionDetails.amount, 10) * 100)}{" "}
+                formatAmount(parseInt(transactionDetails.amount, 10) * 100)}{' '}
               for {transactionDetails?.description}
             </Typography>
           </Grid>
@@ -97,7 +97,7 @@ const TransactionCreateStepThree: React.FC<TransactionCreateStepThreeProps> = ({
         justifyContent="center"
         width="100%"
         height="100"
-        style={{ paddingBottom: "5%" }}
+        style={{ paddingBottom: '5%' }}
       >
         <Grid container direction="row" justify="space-around" alignItems="center">
           <Grid item>
@@ -117,8 +117,8 @@ const TransactionCreateStepThree: React.FC<TransactionCreateStepThreeProps> = ({
               size="small"
               /* istanbul ignore next */
               onClick={() => {
-                sendCreateTransaction("RESET");
-                history.push("/transaction/new");
+                sendCreateTransaction('RESET');
+                history.push('/transaction/new');
               }}
               data-test="new-transaction-create-another-transaction"
             >

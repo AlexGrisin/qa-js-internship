@@ -1,44 +1,44 @@
-import React, { useEffect } from "react";
-import { useMachine } from "@xstate/react";
+import React, { useEffect } from 'react';
+import { useMachine } from '@xstate/react';
 import {
   BaseActionObject,
   Interpreter,
   ResolveTypegenMeta,
   ServiceMap,
   TypegenDisabled,
-} from "xstate";
-import { makeStyles, Container, Grid, useMediaQuery, useTheme } from "@material-ui/core";
+} from 'xstate';
+import { makeStyles, Container, Grid, useMediaQuery, useTheme } from '@material-ui/core';
 
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import NavDrawer from "./NavDrawer";
-import { DataContext, DataEvents, DataSchema } from "../machines/dataMachine";
-import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from "../machines/authMachine";
-import { drawerMachine } from "../machines/drawerMachine";
+import Footer from './Footer';
+import NavBar from './NavBar';
+import NavDrawer from './NavDrawer';
+import { DataContext, DataEvents, DataSchema } from '../machines/dataMachine';
+import { AuthMachineContext, AuthMachineEvents, AuthMachineSchema } from '../machines/authMachine';
+import { drawerMachine } from '../machines/drawerMachine';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
+    display: 'flex',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
   appBarSpacer: {
     minHeight: theme.spacing(13),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       minHeight: theme.spacing(14),
     },
   },
   content: {
     flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
+    height: '100vh',
+    overflow: 'auto',
   },
   container: {
-    minHeight: "77vh",
+    minHeight: '77vh',
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing(4),
       padding: theme.spacing(4),
     },
@@ -62,20 +62,20 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
   const theme = useTheme();
   const [drawerState, sendDrawer] = useMachine(drawerMachine);
 
-  const aboveSmallBreakpoint = useMediaQuery(theme.breakpoints.up("sm"));
-  const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
+  const aboveSmallBreakpoint = useMediaQuery(theme.breakpoints.up('sm'));
+  const xsBreakpoint = useMediaQuery(theme.breakpoints.only('xs'));
 
-  const desktopDrawerOpen = drawerState?.matches({ desktop: "open" });
-  const mobileDrawerOpen = drawerState?.matches({ mobile: "open" });
+  const desktopDrawerOpen = drawerState?.matches({ desktop: 'open' });
+  const mobileDrawerOpen = drawerState?.matches({ mobile: 'open' });
   const toggleDesktopDrawer = () => {
-    sendDrawer("TOGGLE_DESKTOP");
+    sendDrawer('TOGGLE_DESKTOP');
   };
   const toggleMobileDrawer = () => {
-    sendDrawer("TOGGLE_MOBILE");
+    sendDrawer('TOGGLE_MOBILE');
   };
 
-  const openDesktopDrawer = (payload: any) => sendDrawer("OPEN_DESKTOP", payload);
-  const closeMobileDrawer = () => sendDrawer("CLOSE_MOBILE");
+  const openDesktopDrawer = (payload: any) => sendDrawer('OPEN_DESKTOP', payload);
+  const closeMobileDrawer = () => sendDrawer('CLOSE_MOBILE');
 
   useEffect(() => {
     if (!desktopDrawerOpen && aboveSmallBreakpoint) {

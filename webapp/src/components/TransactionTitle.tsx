@@ -1,28 +1,28 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-import { TransactionResponseItem } from "../models";
-import { isRequestTransaction, isAcceptedRequestTransaction } from "../utils/transactionUtils";
+import React from 'react';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import { TransactionResponseItem } from '../models';
+import { isRequestTransaction, isAcceptedRequestTransaction } from '../utils/transactionUtils';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   title: {
     fontSize: 18,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: theme.typography.fontSize,
     },
   },
   titleAction: {
     fontSize: 18,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: theme.typography.fontSize,
     },
   },
   titleName: {
     fontSize: 18,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: theme.typography.fontSize,
     },
-    color: "#1A202C",
+    color: '#1A202C',
   },
 }));
 
@@ -49,9 +49,9 @@ const TransactionTitle: React.FC<{
       >
         {isRequestTransaction(transaction)
           ? isAcceptedRequestTransaction(transaction)
-            ? " charged "
-            : " requested "
-          : " paid "}
+            ? ' charged '
+            : ' requested '
+          : ' paid '}
       </Typography>
       <Typography
         data-test={`transaction-receiver-${transaction.id}`}

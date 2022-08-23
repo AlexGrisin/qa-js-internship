@@ -4,7 +4,7 @@ codecov:
 coverage:
   precision: 2
   round: nearest
-  range: "90...100"
+  range: '90...100'
   status:
     project:
       default:
@@ -20,5 +20,5 @@ coverage:
         - src
 
 comment:
-  layout: "reach,diff,flags,tree"
+  layout: 'reach,diff,flags,tree'
   behavior: default

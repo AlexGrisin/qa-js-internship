@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Typography, Grid, colors } from "@material-ui/core";
+import React from 'react';
+import { Box, Typography, Grid, colors } from '@material-ui/core';
 
 const { grey } = colors;
 
@@ -22,7 +22,7 @@ const EmptyList: React.FC<{ entity: string; children?: React.ReactNode }> = ({
         direction="column"
         justify="center"
         alignItems="center"
-        style={{ height: "100%", width: "100%" }}
+        style={{ height: '100%', width: '100%' }}
         spacing={2}
       >
         <Grid item data-test="empty-list-header">

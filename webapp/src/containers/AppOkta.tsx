@@ -1,18 +1,18 @@
 /* istanbul ignore next */
-import React, { useEffect } from "react";
-import { useActor, useMachine } from "@xstate/react";
-import { makeStyles } from "@material-ui/core/styles";
-import { CssBaseline } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import { useActor, useMachine } from '@xstate/react';
+import { makeStyles } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
 // @ts-ignore
-import { LoginCallback, SecureRoute, useOktaAuth, withOktaAuth } from "@okta/okta-react";
-import { Route } from "react-router-dom";
+import { LoginCallback, SecureRoute, useOktaAuth, withOktaAuth } from '@okta/okta-react';
+import { Route } from 'react-router-dom';
 
-import { snackbarMachine } from "../machines/snackbarMachine";
-import { notificationsMachine } from "../machines/notificationsMachine";
-import { authService } from "../machines/authMachine";
-import AlertBar from "../components/AlertBar";
-import { bankAccountsMachine } from "../machines/bankAccountsMachine";
-import PrivateRoutesContainer from "./PrivateRoutesContainer";
+import { snackbarMachine } from '../machines/snackbarMachine';
+import { notificationsMachine } from '../machines/notificationsMachine';
+import { authService } from '../machines/authMachine';
+import AlertBar from '../components/AlertBar';
+import { bankAccountsMachine } from '../machines/bankAccountsMachine';
+import PrivateRoutesContainer from './PrivateRoutesContainer';
 
 // @ts-ignore
 if (window.Cypress) {
@@ -21,9 +21,9 @@ if (window.Cypress) {
   window.authService = authService;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
+    display: 'flex',
   },
 }));
 
@@ -42,8 +42,8 @@ const AppOkta: React.FC = () => {
   if (window.Cypress) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      const okta = JSON.parse(localStorage.getItem("oktaCypress")!);
-      authService.send("OKTA", {
+      const okta = JSON.parse(localStorage.getItem('oktaCypress')!);
+      authService.send('OKTA', {
         user: okta.user,
         token: okta.token,
       });
@@ -53,16 +53,16 @@ const AppOkta: React.FC = () => {
     useEffect(() => {
       if (oktaAuthState.isAuthenticated) {
         oktaAuthService.getUser().then((user: any) => {
-          authService.send("OKTA", { user, token: oktaAuthState.accessToken });
+          authService.send('OKTA', { user, token: oktaAuthState.accessToken });
         });
       }
     }, [oktaAuthState, oktaAuthService]);
   }
 
   const isLoggedIn =
-    authState.matches("authorized") ||
-    authState.matches("refreshing") ||
-    authState.matches("updating");
+    authState.matches('authorized') ||
+    authState.matches('refreshing') ||
+    authState.matches('updating');
 
   return (
     <div className={classes.root}>
@@ -77,7 +77,7 @@ const AppOkta: React.FC = () => {
           bankAccountsService={bankAccountsService}
         />
       )}
-      {authState.matches("unauthorized") && (
+      {authState.matches('unauthorized') && (
         <>
           <Route path="/implicit/callback" component={LoginCallback} />
           <SecureRoute exact path="/" />

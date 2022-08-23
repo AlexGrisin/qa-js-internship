@@ -1,7 +1,7 @@
 ///<reference path="types.ts" />
 
-import express from "express";
-import { isEqual, pick } from "lodash/fp";
+import express from 'express';
+import { isEqual, pick } from 'lodash/fp';
 
 import {
   getAllUsers,
@@ -11,25 +11,25 @@ import {
   getUserByUsername,
   searchUsers,
   removeUserFromResults,
-} from "./database";
-import { User } from "../src/models/user";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+} from './database';
+import { User } from '../src/models/user';
+import { ensureAuthenticated, validateMiddleware } from './helpers';
 import {
   shortIdValidation,
   searchValidation,
   userFieldsValidator,
   isUserValidator,
-} from "./validators";
+} from './validators';
 const router = express.Router();
 
 // Routes
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
   /* istanbul ignore next */
   const users = removeUserFromResults(req.user?.id!, getAllUsers());
   res.status(200).json({ results: users });
 });
 
-router.get("/search", ensureAuthenticated, validateMiddleware([searchValidation]), (req, res) => {
+router.get('/search', ensureAuthenticated, validateMiddleware([searchValidation]), (req, res) => {
   const { q } = req.query;
 
   /* istanbul ignore next */
@@ -38,7 +38,7 @@ router.get("/search", ensureAuthenticated, validateMiddleware([searchValidation]
   res.status(200).json({ results: users });
 });
 
-router.post("/", userFieldsValidator, validateMiddleware(isUserValidator), (req, res) => {
+router.post('/', userFieldsValidator, validateMiddleware(isUserValidator), (req, res) => {
   const userDetails: User = req.body;
 
   const user = createUser(userDetails);
@@ -48,9 +48,9 @@ router.post("/", userFieldsValidator, validateMiddleware(isUserValidator), (req,
 });
 
 router.get(
-  "/:userId",
+  '/:userId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("userId")]),
+  validateMiddleware([shortIdValidation('userId')]),
   (req, res) => {
     const { userId } = req.params;
 
@@ -58,7 +58,7 @@ router.get(
     /* istanbul ignore next */
     if (!isEqual(userId, req.user?.id)) {
       return res.status(401).send({
-        error: "Unauthorized",
+        error: 'Unauthorized',
       });
     }
 
@@ -69,20 +69,20 @@ router.get(
   }
 );
 
-router.get("/profile/:username", (req, res) => {
+router.get('/profile/:username', (req, res) => {
   const { username } = req.params;
 
-  const user = pick(["firstName", "lastName", "avatar"], getUserByUsername(username));
+  const user = pick(['firstName', 'lastName', 'avatar'], getUserByUsername(username));
 
   res.status(200);
   res.json({ user });
 });
 
 router.patch(
-  "/:userId",
+  '/:userId',
   ensureAuthenticated,
   userFieldsValidator,
-  validateMiddleware([shortIdValidation("userId"), ...isUserValidator]),
+  validateMiddleware([shortIdValidation('userId'), ...isUserValidator]),
   (req, res) => {
     const { userId } = req.params;
 

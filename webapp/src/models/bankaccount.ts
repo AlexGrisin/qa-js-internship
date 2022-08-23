@@ -12,5 +12,5 @@ export interface BankAccount {
 
 export type BankAccountPayload = Pick<
   BankAccount,
-  "userId" | "bankName" | "accountNumber" | "routingNumber"
+  'userId' | 'bankName' | 'accountNumber' | 'routingNumber'
 >;

@@ -1,4 +1,4 @@
-import { getBankAccountsByUserId } from "../../database";
+import { getBankAccountsByUserId } from '../../database';
 
 const Query = {
   listBankAccount(obj: any, args: any, ctx: any) {

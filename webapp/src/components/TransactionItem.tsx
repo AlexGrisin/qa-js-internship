@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router";
+import React from 'react';
+import { useHistory } from 'react-router';
 import {
   ListItem,
   Typography,
@@ -12,26 +12,26 @@ import {
   Theme,
   createStyles,
   makeStyles,
-} from "@material-ui/core";
-import { ThumbUpAltOutlined as LikeIcon, CommentRounded as CommentIcon } from "@material-ui/icons";
-import { TransactionResponseItem } from "../models";
-import TransactionTitle from "./TransactionTitle";
-import TransactionAmount from "./TransactionAmount";
+} from '@material-ui/core';
+import { ThumbUpAltOutlined as LikeIcon, CommentRounded as CommentIcon } from '@material-ui/icons';
+import { TransactionResponseItem } from '../models';
+import TransactionTitle from './TransactionTitle';
+import TransactionAmount from './TransactionAmount';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   paper: {
     padding: theme.spacing(0),
-    margin: "auto",
-    width: "100%",
+    margin: 'auto',
+    width: '100%',
   },
   avatar: {
     width: theme.spacing(2),
   },
   socialStats: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing(2),
     },
   },
@@ -81,8 +81,8 @@ const TransactionItem: React.FC<TransactionProps> = ({ transaction }) => {
               <Badge
                 overlap="circle"
                 anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
+                  vertical: 'bottom',
+                  horizontal: 'right',
                 }}
                 badgeContent={<SmallAvatar src={transaction.receiverAvatar} />}
               >

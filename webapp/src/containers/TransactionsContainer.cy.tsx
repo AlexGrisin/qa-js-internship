@@ -1,50 +1,50 @@
-import { mount } from "@cypress/react";
-import { MemoryRouter } from "react-router-dom";
-import TransactionsContainer from "./TransactionsContainer";
+import { mount } from '@cypress/react';
+import { MemoryRouter } from 'react-router-dom';
+import TransactionsContainer from './TransactionsContainer';
 
-describe("Transactions Container", () => {
-  it("should not render transactions", () => {
+describe('Transactions Container', () => {
+  it('should not render transactions', () => {
     mount(
-      <MemoryRouter initialEntries={["/"]}>
+      <MemoryRouter initialEntries={['/']}>
         <TransactionsContainer />
       </MemoryRouter>
     );
-    cy.get("[data-test*=empty-list-header]").should("exist");
+    cy.get('[data-test*=empty-list-header]').should('exist');
   });
-  it("should render public transactions", () => {
-    cy.intercept("http://localhost:3001/transactions/*", {
-      fixture: "public-transactions.json",
+  it('should render public transactions', () => {
+    cy.intercept('http://localhost:3001/transactions/*', {
+      fixture: 'public-transactions.json',
     });
     mount(
-      <MemoryRouter initialEntries={["/"]}>
+      <MemoryRouter initialEntries={['/']}>
         <TransactionsContainer />
       </MemoryRouter>
     );
-    cy.get("[data-test*=empty-list-header]").should("not.exist");
-    cy.get(".MuiListSubheader-root").should("contain", "Public");
+    cy.get('[data-test*=empty-list-header]').should('not.exist');
+    cy.get('.MuiListSubheader-root').should('contain', 'Public');
   });
-  it("should render contacts transactions", () => {
-    cy.intercept("http://localhost:3001/transactions/*", {
-      fixture: "public-transactions.json",
+  it('should render contacts transactions', () => {
+    cy.intercept('http://localhost:3001/transactions/*', {
+      fixture: 'public-transactions.json',
     });
     mount(
-      <MemoryRouter initialEntries={["/contacts"]}>
+      <MemoryRouter initialEntries={['/contacts']}>
         <TransactionsContainer />
       </MemoryRouter>
     );
-    cy.get("[data-test*=empty-list-header]").should("not.exist");
-    cy.get(".MuiListSubheader-root").should("contain", "Contacts");
+    cy.get('[data-test*=empty-list-header]').should('not.exist');
+    cy.get('.MuiListSubheader-root').should('contain', 'Contacts');
   });
-  it("should render personal transactions", () => {
-    cy.intercept("http://localhost:3001/transactions/*", {
-      fixture: "public-transactions.json",
+  it('should render personal transactions', () => {
+    cy.intercept('http://localhost:3001/transactions/*', {
+      fixture: 'public-transactions.json',
     });
     mount(
-      <MemoryRouter initialEntries={["/personal"]}>
+      <MemoryRouter initialEntries={['/personal']}>
         <TransactionsContainer />
       </MemoryRouter>
     );
-    cy.get("[data-test*=empty-list-header]").should("not.exist");
-    cy.get(".MuiListSubheader-root").should("contain", "Personal");
+    cy.get('[data-test*=empty-list-header]').should('not.exist');
+    cy.get('.MuiListSubheader-root').should('contain', 'Personal');
   });
 });

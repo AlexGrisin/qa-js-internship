@@ -1,13 +1,13 @@
-import React, { useEffect, ReactNode } from "react";
-import { useMachine } from "@xstate/react";
+import React, { useEffect, ReactNode } from 'react';
+import { useMachine } from '@xstate/react';
 import {
   TransactionPagination,
   TransactionResponseItem,
   TransactionDateRangePayload,
   TransactionAmountRangePayload,
-} from "../models";
-import TransactionList from "./TransactionList";
-import { publicTransactionsMachine } from "../machines/publicTransactionsMachine";
+} from '../models';
+import TransactionList from './TransactionList';
+import { publicTransactionsMachine } from '../machines/publicTransactionsMachine';
 
 export interface TransactionPublicListProps {
   filterComponent: ReactNode;
@@ -30,11 +30,11 @@ const TransactionPublicList: React.FC<TransactionPublicListProps> = ({
   }
 
   useEffect(() => {
-    send("FETCH", { ...dateRangeFilters, ...amountRangeFilters });
+    send('FETCH', { ...dateRangeFilters, ...amountRangeFilters });
   }, [send, dateRangeFilters, amountRangeFilters]);
 
   const loadNextPage = (page: number) =>
-    send("FETCH", { page, ...dateRangeFilters, ...amountRangeFilters });
+    send('FETCH', { page, ...dateRangeFilters, ...amountRangeFilters });
 
   return (
     <>
@@ -42,7 +42,7 @@ const TransactionPublicList: React.FC<TransactionPublicListProps> = ({
         filterComponent={filterComponent}
         header="Public"
         transactions={results as TransactionResponseItem[]}
-        isLoading={current.matches("loading")}
+        isLoading={current.matches('loading')}
         loadNextPage={loadNextPage}
         pagination={pageData as TransactionPagination}
         showCreateButton

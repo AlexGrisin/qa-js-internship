@@ -10,9 +10,9 @@ import {
   TransactionAmountRangePayload,
   LikeNotification,
   CommentNotification,
-} from "../models";
-import { faker } from "@faker-js/faker";
-import Dinero from "dinero.js";
+} from '../models';
+import { faker } from '@faker-js/faker';
+import Dinero from 'dinero.js';
 import {
   flow,
   get,
@@ -28,22 +28,22 @@ import {
   omit,
   map,
   drop,
-} from "lodash/fp";
+} from 'lodash/fp';
 
 export const isRequestTransaction = (transaction: Transaction) =>
-  flow(get("requestStatus"), negate(isEmpty))(transaction);
+  flow(get('requestStatus'), negate(isEmpty))(transaction);
 
 /* istanbul ignore next */
 export const isPendingRequestTransaction = (transaction: Transaction) =>
-  flow(get("requestStatus"), isEqual(TransactionRequestStatus.pending))(transaction);
+  flow(get('requestStatus'), isEqual(TransactionRequestStatus.pending))(transaction);
 
 /* istanbul ignore next */
 export const isAcceptedRequestTransaction = (transaction: Transaction) =>
-  flow(get("requestStatus"), isEqual(TransactionRequestStatus.accepted))(transaction);
+  flow(get('requestStatus'), isEqual(TransactionRequestStatus.accepted))(transaction);
 
 /* istanbul ignore next */
 export const isRejectedRequestTransaction = (transaction: Transaction) =>
-  flow(get("requestStatus"), isEqual(TransactionRequestStatus.rejected))(transaction);
+  flow(get('requestStatus'), isEqual(TransactionRequestStatus.rejected))(transaction);
 
 export const isPayment = negate(isRequestTransaction);
 
@@ -55,16 +55,16 @@ export const getFakeAmount = (min: number = 1000, max: number = 50000) =>
 export const formatAmount = (amount: number) => Dinero({ amount }).toFormat();
 
 /* istanbul ignore next */
-export const formatAmountSlider = (amount: number) => Dinero({ amount }).toFormat("$0,0");
+export const formatAmountSlider = (amount: number) => Dinero({ amount }).toFormat('$0,0');
 
 export const payAppDifference = curry((sender: User, transaction: Transaction) =>
-  Dinero({ amount: get("balance", sender) }).subtract(
-    Dinero({ amount: get("amount", transaction) })
+  Dinero({ amount: get('balance', sender) }).subtract(
+    Dinero({ amount: get('amount', transaction) })
   )
 );
 
 export const payAppAddition = curry((sender: User, transaction: Transaction) =>
-  Dinero({ amount: get("balance", sender) }).add(Dinero({ amount: get("amount", transaction) }))
+  Dinero({ amount: get('balance', sender) }).add(Dinero({ amount: get('amount', transaction) }))
 );
 
 export const getChargeAmount = (sender: User, transaction: Transaction) =>
@@ -82,29 +82,29 @@ export const hasSufficientFunds = (sender: User, transaction: Transaction) =>
 
 /* istanbul ignore next */
 export const receiverIsCurrentUser = (currentUser: User, transaction: Transaction) =>
-  isEqual(get("id", currentUser), get("receiverId", transaction));
+  isEqual(get('id', currentUser), get('receiverId', transaction));
 
 export const formatFullName = (user: User) =>
-  flow(pick(["firstName", "lastName"]), values, join(" "))(user);
+  flow(pick(['firstName', 'lastName']), values, join(' '))(user);
 
 export const isCommentNotification = (
   notification: NotificationType
-): notification is CommentNotification => has("commentId")(notification);
+): notification is CommentNotification => has('commentId')(notification);
 
 export const isLikeNotification = (
   notification: NotificationType
-): notification is LikeNotification => has("likeId")(notification);
+): notification is LikeNotification => has('likeId')(notification);
 
 export const isPaymentNotification = (notification: NotificationType) =>
-  has("status")(notification);
+  has('status')(notification);
 
 /* istanbul ignore next */
 export const isPaymentRequestedNotification = (notification: NotificationType) =>
-  flow(get("status"), isEqual(PaymentNotificationStatus.requested))(notification);
+  flow(get('status'), isEqual(PaymentNotificationStatus.requested))(notification);
 
 /* istanbul ignore next */
 export const isPaymentReceivedNotification = (notification: NotificationType) =>
-  flow(get("status"), isEqual(PaymentNotificationStatus.received))(notification);
+  flow(get('status'), isEqual(PaymentNotificationStatus.received))(notification);
 
 /* istanbul ignore next */
 export const currentUserLikesTransaction = (
@@ -112,36 +112,36 @@ export const currentUserLikesTransaction = (
   transaction: TransactionResponseItem
 ) =>
   flow(
-    find((like) => flow(get("userId"), isEqual(get("id", currentUser)))(like)),
+    find(like => flow(get('userId'), isEqual(get('id', currentUser)))(like)),
     negate(isEmpty)
   )(transaction.likes);
 
 export const hasDateQueryFields = (query: TransactionQueryPayload | TransactionDateRangePayload) =>
-  has("dateRangeStart", query) && has("dateRangeEnd", query);
+  has('dateRangeStart', query) && has('dateRangeEnd', query);
 
 export const getDateQueryFields = (query: TransactionDateRangePayload) =>
-  pick(["dateRangeStart", "dateRangeEnd"], query);
+  pick(['dateRangeStart', 'dateRangeEnd'], query);
 
 export const omitDateQueryFields = (query: TransactionQueryPayload) =>
-  omit(["dateRangeStart", "dateRangeEnd"], query);
+  omit(['dateRangeStart', 'dateRangeEnd'], query);
 
 export const hasAmountQueryFields = (
   query: TransactionQueryPayload | TransactionAmountRangePayload
-) => has("amountMin", query) && has("amountMax", query);
+) => has('amountMin', query) && has('amountMax', query);
 
 export const getAmountQueryFields = (query: TransactionAmountRangePayload) =>
-  pick(["amountMin", "amountMax"], query);
+  pick(['amountMin', 'amountMax'], query);
 
 export const omitAmountQueryFields = (query: TransactionQueryPayload) =>
-  omit(["amountMin", "amountMax"], query);
+  omit(['amountMin', 'amountMax'], query);
 
 /* istanbul ignore next */
 export const hasPaginationQueryFields = (
   query: TransactionQueryPayload | TransactionAmountRangePayload
-) => has("page", query) && has("limit", query);
+) => has('page', query) && has('limit', query);
 
 export const omitPaginationQueryFields = (query: TransactionQueryPayload) =>
-  omit(["page", "limit"], query);
+  omit(['page', 'limit'], query);
 
 /* istanbul ignore next */
 export const getQueryWithoutDateFields = (query: TransactionQueryPayload) =>
@@ -169,7 +169,7 @@ export const amountRangeValueTextLabel = (value: number) =>
 /* istanbul ignore next */
 export const formatAmountRangeValues = (amountRangeValues: number[]) =>
   /* istanbul ignore next */
-  flow(map(padAmountWithZeros), map(formatAmountSlider), join(" - "))(amountRangeValues);
+  flow(map(padAmountWithZeros), map(formatAmountSlider), join(' - '))(amountRangeValues);
 
 export const getPaginatedItems = (page: number, limit: number, items: any) => {
   const offset = (page - 1) * limit;

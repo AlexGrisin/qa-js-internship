@@ -1,6 +1,6 @@
 /// <reference types="jest" />
 
-import { faker } from "@faker-js/faker";
+import { faker } from '@faker-js/faker';
 import {
   getBankAccountById,
   getBankAccountsByUserId,
@@ -8,22 +8,22 @@ import {
   seedDatabase,
   createBankAccountForUser,
   removeBankAccountById,
-} from "../../backend/database";
-import { User } from "../../src/models/user";
-import { BankAccount } from "../../src/models/bankaccount";
-describe("BankAccounts", () => {
+} from '../../backend/database';
+import { User } from '../../src/models/user';
+import { BankAccount } from '../../src/models/bankaccount';
+describe('BankAccounts', () => {
   beforeEach(() => {
     seedDatabase();
   });
 
-  it("should retrieve a list of bank accounts for a user", () => {
+  it('should retrieve a list of bank accounts for a user', () => {
     const userToLookup: User = getRandomUser();
 
     const result = getBankAccountsByUserId(userToLookup.id);
     expect(result[0].userId).toBe(userToLookup.id);
   });
 
-  it("should retrieve a bank accounts by id", () => {
+  it('should retrieve a bank accounts by id', () => {
     const userToLookup: User = getRandomUser();
 
     const accounts = getBankAccountsByUserId(userToLookup.id);
@@ -34,7 +34,7 @@ describe("BankAccounts", () => {
     expect(account.id).toEqual(bankAccountId);
   });
 
-  it("should create a bank account for user", () => {
+  it('should create a bank account for user', () => {
     const user: User = getRandomUser();
     const accountNumber = faker.finance.account(10);
 
@@ -47,7 +47,7 @@ describe("BankAccounts", () => {
     expect(result.userId).toBe(user.id);
   });
 
-  it("should delete a bank account", () => {
+  it('should delete a bank account', () => {
     const userToLookup: User = getRandomUser();
 
     const accounts = getBankAccountsByUserId(userToLookup.id);

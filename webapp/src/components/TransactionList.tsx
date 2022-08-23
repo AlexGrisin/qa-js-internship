@@ -1,13 +1,13 @@
-import React, { ReactNode } from "react";
-import { makeStyles, Paper, Button, ListSubheader, Grid } from "@material-ui/core";
-import { Link as RouterLink } from "react-router-dom";
-import { isEmpty } from "lodash/fp";
+import React, { ReactNode } from 'react';
+import { makeStyles, Paper, Button, ListSubheader, Grid } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
+import { isEmpty } from 'lodash/fp';
 
-import SkeletonList from "./SkeletonList";
-import { TransactionResponseItem, TransactionPagination } from "../models";
-import EmptyList from "./EmptyList";
-import TransactionInfiniteList from "./TransactionInfiniteList";
-import TransferMoneyIllustration from "./SvgUndrawTransferMoneyRywa";
+import SkeletonList from './SkeletonList';
+import { TransactionResponseItem, TransactionPagination } from '../models';
+import EmptyList from './EmptyList';
+import TransactionInfiniteList from './TransactionInfiniteList';
+import TransferMoneyIllustration from './SvgUndrawTransferMoneyRywa';
 
 export interface TransactionListProps {
   header: string;
@@ -19,7 +19,7 @@ export interface TransactionListProps {
   filterComponent: ReactNode;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     paddingLeft: theme.spacing(1),
   },
@@ -58,7 +58,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
             direction="column"
             justify="center"
             alignItems="center"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             spacing={2}
           >
             <Grid item>

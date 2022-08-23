@@ -1,21 +1,21 @@
 ///<reference path="types.ts" />
 
-import express from "express";
+import express from 'express';
 
 import {
   getBankAccountsByUserId,
   getBankAccountById,
   createBankAccountForUser,
   removeBankAccountById,
-} from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
-import { shortIdValidation, isBankAccountValidator } from "./validators";
+} from './database';
+import { ensureAuthenticated, validateMiddleware } from './helpers';
+import { shortIdValidation, isBankAccountValidator } from './validators';
 const router = express.Router();
 
 // Routes
 
 //GET /bankAccounts (scoped-user)
-router.get("/", ensureAuthenticated, (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
   /* istanbul ignore next */
   const accounts = getBankAccountsByUserId(req.user?.id!);
 
@@ -25,9 +25,9 @@ router.get("/", ensureAuthenticated, (req, res) => {
 
 //GET /bankAccounts/:bankAccountId (scoped-user)
 router.get(
-  "/:bankAccountId",
+  '/:bankAccountId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("bankAccountId")]),
+  validateMiddleware([shortIdValidation('bankAccountId')]),
   (req, res) => {
     const { bankAccountId } = req.params;
 
@@ -39,7 +39,7 @@ router.get(
 );
 
 //POST /bankAccounts (scoped-user)
-router.post("/", ensureAuthenticated, validateMiddleware(isBankAccountValidator), (req, res) => {
+router.post('/', ensureAuthenticated, validateMiddleware(isBankAccountValidator), (req, res) => {
   /* istanbul ignore next */
   const account = createBankAccountForUser(req.user?.id!, req.body);
 
@@ -49,9 +49,9 @@ router.post("/", ensureAuthenticated, validateMiddleware(isBankAccountValidator)
 
 //DELETE (soft) /bankAccounts (scoped-user)
 router.delete(
-  "/:bankAccountId",
+  '/:bankAccountId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("bankAccountId")]),
+  validateMiddleware([shortIdValidation('bankAccountId')]),
   (req, res) => {
     const { bankAccountId } = req.params;
 

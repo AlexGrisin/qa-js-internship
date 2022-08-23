@@ -1,28 +1,28 @@
-import path from "path";
-import _ from "lodash";
-import axios from "axios";
-import dotenv from "dotenv";
-import Promise from "bluebird";
-import { percyHealthCheck } from "@percy/cypress/task";
-import codeCoverageTask from "@cypress/code-coverage/task";
-import { defineConfig } from "cypress";
-import "@cypress/instrument-cra";
-const { devServer } = require("@cypress/react/plugins/react-scripts");
+import path from 'path';
+import _ from 'lodash';
+import axios from 'axios';
+import dotenv from 'dotenv';
+import Promise from 'bluebird';
+import { percyHealthCheck } from '@percy/cypress/task';
+import codeCoverageTask from '@cypress/code-coverage/task';
+import { defineConfig } from 'cypress';
+import '@cypress/instrument-cra';
+const { devServer } = require('@cypress/react/plugins/react-scripts');
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: '.env.local' });
 dotenv.config();
 
-const awsConfig = require(path.join(__dirname, "./aws-exports-es5.js"));
+const awsConfig = require(path.join(__dirname, './aws-exports-es5.js'));
 
 module.exports = defineConfig({
-  projectId: "7s5okt",
+  projectId: '7s5okt',
   env: {
-    apiUrl: "http://localhost:3001",
+    apiUrl: 'http://localhost:3001',
     mobileViewportWidthBreakpoint: 414,
     coverage: false,
     codeCoverage: {
-      url: "http://localhost:3001/__coverage__",
-      exclude: "cypress/**/*.*",
+      url: 'http://localhost:3001/__coverage__',
+      exclude: 'cypress/**/*.*',
     },
     defaultPassword: process.env.SEED_DEFAULT_USER_PASSWORD,
     paginationPageSize: process.env.PAGINATION_PAGE_SIZE,
@@ -55,24 +55,24 @@ module.exports = defineConfig({
   },
   component: {
     devServer,
-    specPattern: "src/**/*.cy.{js,jsx,ts,tsx}",
-    supportFile: "cypress/support/component.ts",
+    specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/component.ts',
     setupNodeEvents(on, config) {
       codeCoverageTask(on, config);
       return config;
     },
   },
   e2e: {
-    baseUrl: "http://localhost:3000",
-    specPattern: "cypress/tests/**/*.spec.{js,jsx,ts,tsx}",
-    supportFile: "cypress/support/e2e.ts",
+    baseUrl: 'http://localhost:3000',
+    specPattern: 'cypress/tests/**/*.spec.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/e2e.ts',
     viewportHeight: 1000,
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
       const testDataApiEndpoint = `${config.env.apiUrl}/testData`;
 
       const queryDatabase = ({ entity, query }, callback) => {
-        const fetchData = async (attrs) => {
+        const fetchData = async attrs => {
           const { data } = await axios.get(`${testDataApiEndpoint}/${entity}`);
           return callback(data, attrs);
         };
@@ -80,19 +80,19 @@ module.exports = defineConfig({
         return Array.isArray(query) ? Promise.map(query, fetchData) : fetchData(query);
       };
 
-      on("task", {
+      on('task', {
         percyHealthCheck,
-        async "db:seed"() {
+        async 'db:seed'() {
           // seed database with test data
           const { data } = await axios.post(`${testDataApiEndpoint}/seed`);
           return data;
         },
 
         // fetch test data from a database (MySQL, PostgreSQL, etc...)
-        "filter:database"(queryPayload) {
+        'filter:database'(queryPayload) {
           return queryDatabase(queryPayload, (data, attrs) => _.filter(data.results, attrs));
         },
-        "find:database"(queryPayload) {
+        'find:database'(queryPayload) {
           return queryDatabase(queryPayload, (data, attrs) => _.find(data.results, attrs));
         },
       });

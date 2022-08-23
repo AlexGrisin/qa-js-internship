@@ -1,7 +1,7 @@
-import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import React from 'react';
+import { Container, Typography } from '@material-ui/core';
 
-import CypressLogo from "../components/SvgCypressLogo";
+import CypressLogo from '../components/SvgCypressLogo';
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
       <Typography variant="body2" color="textSecondary" align="center">
         Built by
         <a
-          style={{ textDecoration: "none" }}
+          style={{ textDecoration: 'none' }}
           target="_blank"
           rel="noopener noreferrer"
           href="https://cypress.io"
@@ -18,9 +18,9 @@ export default function Footer() {
             style={{
               marginTop: -2,
               marginLeft: 5,
-              height: "20px",
-              width: "55px",
-              verticalAlign: "middle",
+              height: '20px',
+              width: '55px',
+              verticalAlign: 'middle',
             }}
           />
         </a>

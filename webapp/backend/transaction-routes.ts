@@ -1,7 +1,7 @@
 ///<reference path="types.ts" />
 
-import express from "express";
-import { remove, isEmpty, slice, concat } from "lodash/fp";
+import express from 'express';
+import { remove, isEmpty, slice, concat } from 'lodash/fp';
 import {
   getTransactionsForUserContacts,
   createTransaction,
@@ -10,8 +10,8 @@ import {
   getTransactionByIdForApi,
   getTransactionsForUserForApi,
   getPublicTransactionsByQuery,
-} from "./database";
-import { ensureAuthenticated, validateMiddleware } from "./helpers";
+} from './database';
+import { ensureAuthenticated, validateMiddleware } from './helpers';
 import {
   sanitizeTransactionStatus,
   sanitizeRequestStatus,
@@ -20,15 +20,15 @@ import {
   shortIdValidation,
   isTransactionPatchValidator,
   isTransactionPublicQSValidator,
-} from "./validators";
-import { getPaginatedItems } from "../src/utils/transactionUtils";
+} from './validators';
+import { getPaginatedItems } from '../src/utils/transactionUtils';
 const router = express.Router();
 
 // Routes
 
 //GET /transactions - scoped user, auth-required
 router.get(
-  "/",
+  '/',
   ensureAuthenticated,
   validateMiddleware([
     sanitizeTransactionStatus,
@@ -60,7 +60,7 @@ router.get(
 
 //GET /transactions/contacts - scoped user, auth-required
 router.get(
-  "/contacts",
+  '/contacts',
   ensureAuthenticated,
   validateMiddleware([
     sanitizeTransactionStatus,
@@ -92,7 +92,7 @@ router.get(
 
 //GET /transactions/public - auth-required
 router.get(
-  "/public",
+  '/public',
   ensureAuthenticated,
   validateMiddleware(isTransactionPublicQSValidator),
   (req, res) => {
@@ -135,14 +135,14 @@ router.get(
 
 //POST /transactions - scoped-user
 router.post(
-  "/",
+  '/',
   ensureAuthenticated,
   validateMiddleware(isTransactionPayloadValidator),
   (req, res) => {
     const transactionPayload = req.body;
     const transactionType = transactionPayload.transactionType;
 
-    remove("transactionType", transactionPayload);
+    remove('transactionType', transactionPayload);
 
     /* istanbul ignore next */
     const transaction = createTransaction(req.user?.id!, transactionType, transactionPayload);
@@ -154,9 +154,9 @@ router.post(
 
 //GET /transactions/:transactionId - scoped-user
 router.get(
-  "/:transactionId",
+  '/:transactionId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("transactionId")]),
+  validateMiddleware([shortIdValidation('transactionId')]),
   (req, res) => {
     const { transactionId } = req.params;
 
@@ -169,9 +169,9 @@ router.get(
 
 //PATCH /transactions/:transactionId - scoped-user
 router.patch(
-  "/:transactionId",
+  '/:transactionId',
   ensureAuthenticated,
-  validateMiddleware([shortIdValidation("transactionId"), ...isTransactionPatchValidator]),
+  validateMiddleware([shortIdValidation('transactionId'), ...isTransactionPatchValidator]),
   (req, res) => {
     const { transactionId } = req.params;
 

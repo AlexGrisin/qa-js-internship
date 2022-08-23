@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { useActor, useMachine } from "@xstate/react";
-import { makeStyles } from "@material-ui/core/styles";
-import { CssBaseline, Container } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import { useActor, useMachine } from '@xstate/react';
+import { makeStyles } from '@material-ui/core/styles';
+import { CssBaseline, Container } from '@material-ui/core';
 
-import { snackbarMachine } from "../machines/snackbarMachine";
-import { notificationsMachine } from "../machines/notificationsMachine";
-import { authService } from "../machines/authMachine";
-import AlertBar from "../components/AlertBar";
-import { bankAccountsMachine } from "../machines/bankAccountsMachine";
-import PrivateRoutesContainer from "./PrivateRoutesContainer";
-import Amplify, { Auth } from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn } from "@aws-amplify/ui-react";
-import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
+import { snackbarMachine } from '../machines/snackbarMachine';
+import { notificationsMachine } from '../machines/notificationsMachine';
+import { authService } from '../machines/authMachine';
+import AlertBar from '../components/AlertBar';
+import { bankAccountsMachine } from '../machines/bankAccountsMachine';
+import PrivateRoutesContainer from './PrivateRoutesContainer';
+import Amplify, { Auth } from 'aws-amplify';
+import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn } from '@aws-amplify/ui-react';
+import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 // @ts-ignore
-import awsConfig from "../aws-exports";
+import awsConfig from '../aws-exports';
 
 Amplify.configure(awsConfig);
 
@@ -25,9 +25,9 @@ if (window.Cypress) {
   window.authService = authService;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
+    display: 'flex',
   },
 }));
 
@@ -42,26 +42,26 @@ const AppCognito: React.FC = /* istanbul ignore next */ () => {
 
   useEffect(() => {
     return onAuthUIStateChange((nextAuthState, authData) => {
-      console.log("authData: ", authData);
+      console.log('authData: ', authData);
       if (nextAuthState === AuthState.SignedIn) {
-        authService.send("COGNITO", { user: authData });
+        authService.send('COGNITO', { user: authData });
       }
     });
   }, []);
 
   useEffect(() => {
-    authService.onEvent(async (event) => {
-      if (event.type === "done.invoke.performLogout") {
-        console.log("AppCognito authService.onEvent done.invoke.performLogout");
+    authService.onEvent(async event => {
+      if (event.type === 'done.invoke.performLogout') {
+        console.log('AppCognito authService.onEvent done.invoke.performLogout');
         await Auth.signOut();
       }
     });
   }, []);
 
   const isLoggedIn =
-    authState.matches("authorized") ||
-    authState.matches("refreshing") ||
-    authState.matches("updating");
+    authState.matches('authorized') ||
+    authState.matches('refreshing') ||
+    authState.matches('updating');
 
   return isLoggedIn ? (
     <div className={classes.root}>
