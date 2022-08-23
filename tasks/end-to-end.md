@@ -4,14 +4,15 @@ In this section, you can find tasks we expect in your assignment from the **E2E 
 
 ## Required Tasks
 
-- [ ] **1.** Registration tests
-- [ ] **2.** Log in tests
-- [ ] **3.** Account details
-- [ ] **4.** Account balance
-- [ ] **5.** Account order history
-- [ ] **6.** Account order history: Transaction details
-- [ ] **7.** My Account: Update user settings
-- [ ] **8.** Bank Account: Add new bank account
-- [ ] **9.** Bank Account: Delete bank account
-- [ ] **10.** Payment: Pay
-- [ ] **11.** Payment: Request
+- [ ] **1.** Should register a new account
+- [ ] **2.** Should log in with existing account
+- [ ] **3.** Should see account details
+- [ ] **4.** Should see account balance
+- [ ] **5.** Should see account transactions history
+- [ ] **6.** Should see account transaction details
+- [ ] **7.** Should be able to like and comment on transaction
+- [ ] **8.** Should update account user settings
+- [ ] **9.** Should add new bank account
+- [ ] **10.** Should delete bank account
+- [ ] **11.** Should submit payment transaction
+- [ ] **12.** Should submit payment request transaction
