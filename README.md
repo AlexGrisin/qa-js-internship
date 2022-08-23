@@ -20,19 +20,6 @@ For now, we can use whatever versions, but at the time of creating this repo, we
 yarn install
 ```
 
-## Adding new dependencies to the project
-
-```shell
-yarn workspace <project_name> add <dependency_name>
-yarn workspace <project_name> add -D <dependency_name>
-
-# OR
-
-cd <project_directory>
-yarn add <dependency_name>
-yarn add -D <dependency_name>
-```
-
 ## Web application under test
 
 We use Cypress [Real World Application](https://www.cypress.io/blog/2020/06/11/introducing-the-cypress-real-world-app/) purely for demonstration and educational purposes. Use this app to learn, experiment, tinker, and practice application testing with different test frameworks.
