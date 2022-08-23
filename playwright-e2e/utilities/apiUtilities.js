@@ -1,10 +1,8 @@
-import { testUser } from '../data/users';
-
-export async function getSessionId(request) {
+export async function getSessionId(request, user) {
   const loginResponse = await request.post('/login', {
     data: {
-      username: testUser.username,
-      password: testUser.password,
+      username: user.username,
+      password: user.password,
       type: 'LOGIN',
     },
   });
@@ -12,8 +10,8 @@ export async function getSessionId(request) {
   return sessionId;
 }
 
-export async function loggedInUserApiContext(playwright, request) {
-  const sessionId = await getSessionId(request);
+export async function loggedInUserApiContext(playwright, request, user) {
+  const sessionId = await getSessionId(request, user);
   playwright.request.newContext({
     extraHTTPHeaders: {
       Cookie: sessionId,

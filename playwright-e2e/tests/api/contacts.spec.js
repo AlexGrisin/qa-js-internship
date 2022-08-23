@@ -1,8 +1,9 @@
 const { test, expect } = require('@playwright/test');
+const { testUser } = require('../../data/users');
 const { loggedInUserApiContext } = require('../../utilities/apiUtilities');
 
 test.beforeAll(async ({ playwright, request }) => {
-  await loggedInUserApiContext(playwright, request);
+  await loggedInUserApiContext(playwright, request, testUser);
 });
 
 test('should get contacts', async ({ request }) => {
