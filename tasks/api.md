@@ -4,6 +4,8 @@ In this section, you can find tasks we expect in your assignment from the **API 
 
 ## Required Tasks
 
+Cover user scenarios with API tests using Cypress and/or PlayWright test automation frameworks:
+
 - [ ] **1.** Should register a new account
 - [ ] **2.** Should log in with existing account
 - [ ] **3.** Should get list of users (GET /users)
