@@ -20,16 +20,6 @@ jobs:
       - name: install
         run: |
           yarn install
-      - name: start
-        run: |
-          yarn webapp:start:api &
-      - name: Wait on
-        uses: iFaxity/wait-on-action@v1
-        with:
-          resource: http://localhost:3001
-          log: true
-          interval: 1000
-          timeout: 120000
-      - name: tests
+      - name: test
         run: |
           yarn playwright-e2e:test:api
