@@ -79,5 +79,5 @@ yarn supertest-api:test
 
 In this section, you can find tasks we expect in your assignment from the **Automation Tests** standpoint:
 
-- E2E [Tasks](./tasks/end-to-end.md#Tasks)
-- API [Tasks](./tasks/api.md#Tasks)
+- E2E Automation Tests: [Tasks](./tasks/end-to-end.md#Tasks)
+- API Automation Tests: [Tasks](./tasks/api.md#Tasks)
