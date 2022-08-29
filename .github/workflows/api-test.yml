@@ -22,7 +22,7 @@ jobs:
           yarn install
       - name: start
         run: |
-          yarn webapp:start:api
+          yarn webapp:start:api &
       - name: tests
         run: |
           yarn playwright-e2e:test:api
