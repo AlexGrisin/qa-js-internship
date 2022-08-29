@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "webapp:start": "yarn workspace js-internship-web-app dev",
+    "webapp:start:api": "yarn workspace js-internship-web-app start:api",
     "playwright-e2e:test": "yarn workspace js-internship-playwright test",
     "playwright-e2e:test:api": "yarn workspace js-internship-playwright test:api",
     "playwright-e2e:report": "yarn workspace js-internship-playwright report",

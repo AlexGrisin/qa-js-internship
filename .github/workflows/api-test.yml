@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v3
         with:
           node-version: 14.x
@@ -22,7 +22,7 @@ jobs:
           yarn install
       - name: start
         run: |
-          yarn webapp:start
+          yarn webapp:start:api
       - name: tests
         run: |
           yarn playwright-e2e:test:api
