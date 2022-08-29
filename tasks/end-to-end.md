@@ -1,8 +1,8 @@
-# Assignment Instructions - E2E Automation Tests
+# E2E Automation Tests
 
 In this section, you can find tasks we expect in your assignment from the **E2E Automation Tests** standpoint. Perform an Exploratory Testing session against the application to acquire practical knowledge about it.
 
-## Required Tasks
+## Tasks
 
 Cover user scenarios with E2E tests using Cypress and/or PlayWright test automation frameworks:
 

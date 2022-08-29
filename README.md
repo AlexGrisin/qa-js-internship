@@ -74,3 +74,10 @@ Documentation can be found [here](https://github.com/visionmedia/supertest)
 ```shell
 yarn supertest-api:test
 ```
+
+## Tasks
+
+In this section, you can find tasks we expect in your assignment from the **Automation Tests** standpoint:
+
+- E2E [Tasks](./tasks/end-to-end.md#Tasks)
+- API [Tasks](./tasks/api.md#Tasks)

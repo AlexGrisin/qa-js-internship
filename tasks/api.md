@@ -1,8 +1,8 @@
-# Assignment Instructions - API Automation Tests
+# API Automation Tests
 
 In this section, you can find tasks we expect in your assignment from the **API Automation Tests** standpoint.
 
-## Required Tasks
+## Tasks
 
 Cover user scenarios with API tests using Cypress and/or PlayWright test automation frameworks:
 
