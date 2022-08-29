@@ -23,12 +23,10 @@ jobs:
       - name: start
         run: |
           yarn webapp:start:api &
-      - name: tests
-        uses: nev7n/wait_for_response@v1
+      - name: Wait on
+        uses: iFaxity/wait-on-action@v1
         with:
-          url: 'http://localhost:3001/'
-          responseCode: 200
-          timeout: 120000
-          interval: 2000
+          resource: http://localhost:3001
+      - name: tests
         run: |
           yarn playwright-e2e:test:api
