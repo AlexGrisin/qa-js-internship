@@ -23,6 +23,9 @@ jobs:
       - name: start
         run: |
           yarn webapp:start:api &
+      - name: Pause for 60 seconds
+        run: |
+          sleep 60
       - name: tests
         run: |
           yarn playwright-e2e:test:api
