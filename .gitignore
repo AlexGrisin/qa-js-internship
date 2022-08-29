@@ -20,3 +20,7 @@ node_modules
 
 # Log files
 *.log
+
+## Cypress
+**/screenshots
+**/mochawesome-report
