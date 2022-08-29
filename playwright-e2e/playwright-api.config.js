@@ -100,7 +100,7 @@ const config = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn workspace js-internship-web-app start:api',
+    command: 'yarn workspace js-internship-web-app start',
     url: 'http://localhost:3001/',
     timeout: 120 * 1000,
     reuseExistingServer: true,
