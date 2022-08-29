@@ -23,9 +23,12 @@ jobs:
       - name: start
         run: |
           yarn webapp:start:api &
-      - name: Pause for 60 seconds
-        run: |
-          sleep 60
       - name: tests
+        uses: nev7n/wait_for_response@v1
+        with:
+          url: 'http://localhost:3001/'
+          responseCode: 200
+          timeout: 120000
+          interval: 2000
         run: |
           yarn playwright-e2e:test:api
