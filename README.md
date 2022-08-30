@@ -25,7 +25,7 @@ yarn install
 We use Cypress [Real World Application](https://www.cypress.io/blog/2020/06/11/introducing-the-cypress-real-world-app/) purely for demonstration and educational purposes. Use this app to learn, experiment, tinker, and practice application testing with different test frameworks.
 
 Make sure to qualify for the [Prerequisite](./webapp/README.md#Prerequisites).
-Start Web application with [Run the app](./webapp/README.md#Run).
+Start Web application with [Run the app](./webapp/README.md#Run-the-app).
 
 ### Start Web application
 
@@ -39,13 +39,13 @@ yarn webapp:start
 
 Extensive documentation can be found [here](https://docs.cypress.io/guides/overview/why-cypress)
 
-### Execute Cypress tets
+#### Execute Cypress tets
 
 ```shell
 yarn cypress-e2e:test
 ```
 
-### Execute Cypress API tets
+#### Execute Cypress API tets
 
 ```shell
 yarn cypress-e2e:test:api
@@ -57,13 +57,13 @@ yarn cypress-e2e:test:api
 
 Extensive documentation can be found [here](https://playwright.dev/docs/intro)
 
-### Execute PlayWright tets
+#### Execute PlayWright tets
 
 ```shell
 yarn playwright-e2e:test
 ```
 
-### Execute PlayWright API tets
+#### Execute PlayWright API tets
 
 ```shell
 yarn playwright-e2e:test:api
@@ -75,7 +75,7 @@ yarn playwright-e2e:test:api
 
 Documentation can be found [here](https://github.com/visionmedia/supertest)
 
-### Execute Supertest API tets
+#### Execute Supertest API tets
 
 ```shell
 yarn supertest-api:test
