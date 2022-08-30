@@ -45,6 +45,12 @@ Extensive documentation can be found [here](https://docs.cypress.io/guides/overv
 yarn cypress-e2e:test
 ```
 
+### Execute Cypress API tets
+
+```shell
+yarn cypress-e2e:test:api
+```
+
 ## PlayWright
 
 **PlayWright** is a Front end automation framework.
