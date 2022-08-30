@@ -1,11 +1,19 @@
 describe('User login', () => {
+  let users;
+
+  before(() => {
+    cy.fixture('users').then(data => {
+      users = data;
+    });
+  });
+
   it('should log in', () => {
     cy.request({
       method: 'POST',
       url: '/login',
       body: {
-        username: 'Katharina_Bernier',
-        password: 's3cret',
+        username: users.testuser.username,
+        password: users.testuser.password,
         type: 'LOGIN',
       },
     }).then(response => {
@@ -18,8 +26,8 @@ describe('User login', () => {
       method: 'POST',
       url: '/login',
       body: {
-        username: 'Katharina_Bernier',
-        password: 'invalid_password',
+        username: users.invaliduser.username,
+        password: users.invaliduser.password,
         type: 'LOGIN',
       },
       failOnStatusCode: false,
