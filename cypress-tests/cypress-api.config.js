@@ -5,8 +5,10 @@ module.exports = defineConfig({
   reporter: '../../node_modules/mochawesome/src/mochawesome.js',
   reporterOptions: {
     toConsole: true,
-    html: true,
+    html: false,
     json: true,
+    overwrite: false,
+    reportDir: 'cypress/report/mochawesome-report',
   },
   e2e: {
     baseUrl: 'http://localhost:3001',

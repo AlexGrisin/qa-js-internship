@@ -9402,7 +9402,7 @@ fs-extra@^4.0.3:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -12602,6 +12602,15 @@ mocha@^10.0.0:
     yargs "16.2.0"
     yargs-parser "20.2.4"
     yargs-unparser "2.0.0"
+
+mochawesome-merge@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/mochawesome-merge/-/mochawesome-merge-4.2.1.tgz#484e5c500dd5d88b33adb440e6dfef80d9109a18"
+  integrity sha512-G7+LqIKgixShKG4FyWDn1PIrzpKEwCofrJip/VzdqghNGqZl4S5MNoXx5YDfk9KLe+pr4qGa1TOzCc/oVw/8Kw==
+  dependencies:
+    fs-extra "^7.0.1"
+    glob "^7.1.6"
+    yargs "^15.3.1"
 
 mochawesome-report-generator@^6.2.0:
   version "6.2.0"
