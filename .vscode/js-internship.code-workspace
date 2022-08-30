@@ -5,16 +5,16 @@
 			"path": "../"
 		},
 		{
-			"name": "cypress-e2e",
-			"path": "../cypress-e2e"
+			"name": "cypress-tests",
+			"path": "../cypress-tests"
 		},
 		{
-			"name": "playwright-e2e",
-			"path": "../playwright-e2e"
+			"name": "playwright-tests",
+			"path": "../playwright-tests"
 		},
 		{
-			"name": "supertest-api",
-			"path": "../supertest-api"
+			"name": "supertest",
+			"path": "../supertest"
 		},
 		{
 			"name": "webapp",
@@ -24,9 +24,9 @@
 	"settings": {
 		// Exclude project folders inside the root directory in workspace
 		"files.exclude": {
-			"cypress-e2e": true,
-			"playwright-e2e": true,
-			"supertest-api": true,
+			"cypress-tests": true,
+			"playwright-tests": true,
+			"supertest": true,
 			"webapp": true
 		},
 		"[javascript]": {

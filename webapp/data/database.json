@@ -11,7 +11,7 @@
       "phoneNumber": "625-316-9882",
       "avatar": "https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg",
       "defaultPrivacyLevel": "public",
-      "balance": 168137,
+      "balance": 148137,
       "createdAt": "2019-08-27T23:47:05.637Z",
       "modifiedAt": "2020-05-21T11:02:22.857Z"
     },
@@ -26,7 +26,7 @@
       "phoneNumber": "537-041-4355",
       "avatar": "https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg",
       "defaultPrivacyLevel": "private",
-      "balance": 101805,
+      "balance": 121805,
       "createdAt": "2019-09-09T13:48:45.489Z",
       "modifiedAt": "2020-05-21T02:34:01.483Z"
     },
@@ -9855,6 +9855,30 @@
       "requestResolvedAt": "",
       "createdAt": "2019-06-27T22:24:04.794Z",
       "modifiedAt": "2020-05-21T04:58:44.494Z"
+    },
+    {
+      "id": "Hst1Pl09f",
+      "uuid": "7ceeba68-fe12-4c58-9b71-0333c1e83bb7",
+      "amount": 10000,
+      "description": "description",
+      "receiverId": "qywYp6hS0U",
+      "senderId": "t45AiwidW",
+      "privacyLevel": "public",
+      "status": "complete",
+      "createdAt": "2022-08-30T07:57:10.755Z",
+      "modifiedAt": "2022-08-30T07:57:10.755Z"
+    },
+    {
+      "id": "dvxC5_o2x",
+      "uuid": "7ae41a85-5996-4dfb-ac73-9f2498ae0eb8",
+      "amount": 10000,
+      "description": "description",
+      "receiverId": "qywYp6hS0U",
+      "senderId": "t45AiwidW",
+      "privacyLevel": "public",
+      "status": "complete",
+      "createdAt": "2022-08-30T07:59:17.958Z",
+      "modifiedAt": "2022-08-30T07:59:17.958Z"
     }
   ],
   "likes": [
@@ -10431,6 +10455,26 @@
       "isRead": false,
       "createdAt": "2019-10-19T20:50:49.292Z",
       "modifiedAt": "2020-05-21T21:00:50.192Z"
+    },
+    {
+      "id": "8JtwIW2l5q",
+      "uuid": "850294e3-b2b9-4087-9b16-e3b6c5a64344",
+      "userId": "qywYp6hS0U",
+      "transactionId": "Hst1Pl09f",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2022-08-30T07:57:10.780Z",
+      "modifiedAt": "2022-08-30T07:57:10.780Z"
+    },
+    {
+      "id": "TfKD0SNwV8",
+      "uuid": "1e4974fb-716d-4a79-a666-4adb00a6907a",
+      "userId": "qywYp6hS0U",
+      "transactionId": "dvxC5_o2x",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2022-08-30T07:59:17.968Z",
+      "modifiedAt": "2022-08-30T07:59:17.968Z"
     }
   ],
   "banktransfers": [

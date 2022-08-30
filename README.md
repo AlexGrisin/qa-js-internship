@@ -43,16 +43,16 @@ yarn webapp:start
 
 Extensive documentation can be found [here](https://docs.cypress.io/guides/overview/why-cypress)
 
-### Execute Cypress tets
+### Execute Cypress E2E tets
 
 ```shell
-yarn cypress-e2e:test
+yarn cypress:e2e
 ```
 
 ### Execute Cypress API tets
 
 ```shell
-yarn cypress-e2e:test:api
+yarn cypress:api
 ```
 
 ## PlayWright
@@ -61,16 +61,16 @@ yarn cypress-e2e:test:api
 
 Extensive documentation can be found [here](https://playwright.dev/docs/intro)
 
-### Execute PlayWright tets
+### Execute PlayWright E2E tets
 
 ```shell
-yarn playwright-e2e:test
+yarn playwright:e2e
 ```
 
 ### Execute PlayWright API tets
 
 ```shell
-yarn playwright-e2e:test:api
+yarn playwright:api
 ```
 
 ## Supertest
@@ -82,7 +82,7 @@ Documentation can be found [here](https://github.com/visionmedia/supertest)
 ### Execute Supertest API tets
 
 ```shell
-yarn supertest-api:test
+yarn supertest:api
 ```
 
 ## Tasks

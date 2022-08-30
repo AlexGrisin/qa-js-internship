@@ -5,14 +5,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "webapp:start": "yarn workspace js-internship-web-app start",
-    "playwright-e2e:test": "yarn workspace js-internship-playwright test",
-    "playwright-e2e:test:api": "yarn workspace js-internship-playwright test:api",
-    "playwright-e2e:report": "yarn workspace js-internship-playwright report",
-    "cypress-e2e:test": "yarn workspace js-internship-cypress test",
-    "cypress-e2e:test:api": "yarn workspace js-internship-cypress test:api",
-    "supertest-api:test": "yarn workspace js-internship-supertest test",
-    "postinstall": "yarn workspace js-internship-playwright install"
+    "cypress:api": "yarn workspace js-internship-cypress test:api",
+    "cypress:e2e": "yarn workspace js-internship-cypress test",
+    "playwright:api": "yarn workspace js-internship-playwright test:api",
+    "playwright:e2e": "yarn workspace js-internship-playwright test",
+    "playwright:report": "yarn workspace js-internship-playwright report",
+    "postinstall": "yarn workspace js-internship-playwright install",
+    "supertest:api": "yarn workspace js-internship-supertest test",
+    "webapp:start": "yarn workspace js-internship-web-app start"
   },
   "resolutions": {
     "@babel/compat-data": "7.9.0",
@@ -20,9 +20,9 @@
     "@types/express-serve-static-core": "4.17.2"
   },
   "workspaces": [
-    "cypress-e2e",
-    "playwright-e2e",
-    "supertest-api",
+    "cypress-tests",
+    "playwright-tests",
+    "supertest",
     "webapp"
   ]
 }
