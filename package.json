@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "webapp:start": "yarn workspace js-internship-web-app dev",
+    "webapp:start": "yarn workspace js-internship-web-app start",
     "playwright-e2e:test": "yarn workspace js-internship-playwright test",
     "playwright-e2e:test:api": "yarn workspace js-internship-playwright test:api",
     "playwright-e2e:report": "yarn workspace js-internship-playwright report",

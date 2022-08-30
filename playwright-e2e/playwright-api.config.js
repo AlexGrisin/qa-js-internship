@@ -99,10 +99,12 @@ const config = {
   // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 3000,
-  // },
+  webServer: {
+    command: 'yarn workspace js-internship-web-app start',
+    url: 'http://localhost:3001/',
+    timeout: 120 * 1000,
+    reuseExistingServer: true,
+  },
 };
 
 module.exports = config;
