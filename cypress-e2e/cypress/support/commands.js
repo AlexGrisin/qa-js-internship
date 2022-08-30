@@ -29,3 +29,16 @@ Cypress.Commands.add('login', (userName, password) => {
   cy.get('#password').type(password);
   cy.get('[data-test=signin-submit]').click();
 });
+
+Cypress.Commands.add('loginRequest', (userName, password) => {
+  cy.request({
+    method: 'POST',
+    url: '/login',
+    body: {
+      username: userName,
+      password: password,
+      type: 'LOGIN',
+    },
+    failOnStatusCode: false,
+  });
+});
