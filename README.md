@@ -1,6 +1,10 @@
 # Welcome to the Grid Dynamics JavaScript Internship repo
 
-The purpose of this project is to create E2E Testing framework
+End-to-end testing is an increasingly popular way to test applications against complex operations, UI states, mobile-friendly views, and more.
+
+The move to cloud computing has highlighted the importance of Application Programming Interfaces. API testing is a necessity with the rise in cloud applications and interconnect platforms.
+
+The purpose of this project is to learn and create E2E and API Testing frameworks with Cypress and Playwright
 
 ## Overview
 
