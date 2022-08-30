@@ -1,48 +1,49 @@
 {
-	"folders": [
-		{
-			"name": "root",
-			"path": "../"
-		},
-		{
-			"name": "cypress-tests",
-			"path": "../cypress-tests"
-		},
-		{
-			"name": "playwright-tests",
-			"path": "../playwright-tests"
-		},
-		{
-			"name": "supertest",
-			"path": "../supertest"
-		},
-		{
-			"name": "webapp",
-			"path": "../webapp"
-		},
-	],
-	"settings": {
-		// Exclude project folders inside the root directory in workspace
-		"files.exclude": {
-			"cypress-tests": true,
-			"playwright-tests": true,
-			"supertest": true,
-			"webapp": true
-		},
-		"[javascript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode",
-			"editor.formatOnSave": true
-		},
-		"[json]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode",
-			"editor.formatOnSave": true
-		},
-	},
-	"extensions": {
-	  "recommendations": [
-		"esbenp.prettier-vscode",
-		"streetsidesoftware.code-spell-checker",
-		"ms-playwright.playwright"
-	  ]
-	}
+  "folders": [
+    {
+      "name": "root",
+      "path": "../"
+    },
+    {
+      "name": "cypress-tests",
+      "path": "../cypress-tests"
+    },
+    {
+      "name": "playwright-tests",
+      "path": "../playwright-tests"
+    },
+    {
+      "name": "supertest",
+      "path": "../supertest"
+    },
+    {
+      "name": "webapp",
+      "path": "../webapp"
+    }
+  ],
+  "settings": {
+    // Exclude project folders inside the root directory in workspace
+    "files.exclude": {
+      "cypress-tests": true,
+      "playwright-tests": true,
+      "supertest": true,
+      "webapp": true
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "cSpell.words": ["mochawesome"]
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker",
+      "ms-playwright.playwright"
+    ]
+  }
 }
