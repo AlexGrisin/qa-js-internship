@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test": "cypress run",
+    "test:api": "cypress run --config-file cypress-api.config.js",
     "open": "cypress open"
   },
   "dependencies": {
