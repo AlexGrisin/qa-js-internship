@@ -9,7 +9,7 @@
     "cypress:e2e": "yarn workspace js-internship-cypress test:e2e",
     "cypress:report": "yarn workspace js-internship-cypress report",
     "playwright:api": "yarn workspace js-internship-playwright test:api",
-    "playwright:e2e": "yarn workspace js-internship-playwright test",
+    "playwright:e2e": "yarn workspace js-internship-playwright test:e2e",
     "playwright:report": "yarn workspace js-internship-playwright report",
     "postinstall": "yarn workspace js-internship-playwright install",
     "supertest:api": "yarn workspace js-internship-supertest test",

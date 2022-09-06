@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "playwright test tests/e2e",
+    "test:e2e": "playwright test tests/e2e",
     "test:api": "playwright test tests/api --config=playwright-api.config.js",
     "report": "playwright show-report",
     "install": "playwright install"
