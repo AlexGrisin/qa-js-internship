@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "open": "cypress open",
+    "open:e2e": "cypress open",
+    "open:api": "cypress open --config-file cypress-api.config.js",
     "report": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/mochawesome-report/output.json && marge cypress/report/mochawesome-report/output.json --reportDir ./cypress/report/mochawesome-report --inline",
-    "test": "cypress run",
+    "test:e2e": "cypress run",
     "test:api": "cypress run --config-file cypress-api.config.js"
   },
   "dependencies": {

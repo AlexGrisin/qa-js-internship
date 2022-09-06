@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "cypress:api": "yarn workspace js-internship-cypress test:api",
-    "cypress:e2e": "yarn workspace js-internship-cypress test",
+    "cypress:e2e": "yarn workspace js-internship-cypress test:e2e",
     "cypress:report": "yarn workspace js-internship-cypress report",
     "playwright:api": "yarn workspace js-internship-playwright test:api",
     "playwright:e2e": "yarn workspace js-internship-playwright test",
