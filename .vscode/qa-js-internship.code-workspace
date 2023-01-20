@@ -43,7 +43,8 @@
     "recommendations": [
       "esbenp.prettier-vscode",
       "streetsidesoftware.code-spell-checker",
-      "ms-playwright.playwright"
+      "ms-playwright.playwright",
+      "shelex.vscode-cy-helper"
     ]
   }
 }
