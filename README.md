@@ -12,8 +12,6 @@ This mono repo includes `webapp`, containing the React app, `cypress` containing
 
 ## Prerequisites
 
-For now, we can use whatever versions, but at the time of creating this repo, we used
-
 - Node version: 14.17
 - NPM version: 6.14.13
 - Yarn version: 1.22.19
